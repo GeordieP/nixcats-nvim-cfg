@@ -52,6 +52,9 @@
 
   # see :help nixCats.flake.outputs
   outputs = { self, nixpkgs, ... }@inputs: let
+    imports = [
+      inputs.nixCats.homeModule
+    ];
     inherit (inputs.nixCats) utils;
     luaPath = ./.;
     # this is flake-utils eachSystem
