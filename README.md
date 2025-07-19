@@ -1,3 +1,9 @@
+# nvim config
+
+Custom nix-based neovim config with lua integration
+
+Thanks to: https://github.com/BirdeeHub/nixCats-nvim
+
 # Example `nixCats` Configuration
 
 This directory contains an example of the suggested, idiomatic way to manage a neovim configuration using `nixCats`. It leverages [`lze`](https://github.com/BirdeeHub/lze) for lazy loading, although [`lz.n`](https://github.com/nvim-neorocks/lz.n) can be used instead to similar effect. It also includes a fallback mechanism using `paq` and `mason`, allowing you to load the directory without `nix` if needed.
