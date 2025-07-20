@@ -157,6 +157,9 @@
             nvim-web-devicons
             yazi-nvim
           ];
+          themes-colorschemes = [
+            gruvbox-material-nvim
+          ];
         };
         # You can retreive information from the
         # packageDefinitions of the package this was packaged with.
