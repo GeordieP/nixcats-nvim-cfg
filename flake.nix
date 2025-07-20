@@ -112,6 +112,7 @@
           universal-ctags
           ripgrep
           fd
+          yazi
         ];
         # these names are arbitrary.
         lint = with pkgs; [
@@ -153,8 +154,8 @@
             nvim-notify
           ];
           extra = [
-            oil-nvim
             nvim-web-devicons
+            yazi-nvim
           ];
         };
         # You can retreive information from the
