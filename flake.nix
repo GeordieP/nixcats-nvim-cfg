@@ -113,6 +113,7 @@
           ripgrep
           fd
           yazi
+          lazygit
         ];
         # these names are arbitrary.
         lint = with pkgs; [
@@ -156,6 +157,7 @@
           extra = [
             nvim-web-devicons
             yazi-nvim
+            lazygit-nvim
           ];
           themes-colorschemes = [
             gruvbox-material-nvim

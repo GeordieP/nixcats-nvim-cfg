@@ -86,6 +86,14 @@ require('lze').load {
     },
   },
   {
+    "lazygit.nvim",
+    for_cat = 'general.extra',
+    cmd = { "LazyGit", "LazyGitConfig", "LazyGitCurrentFile", "LazyGitFilter", "LazyGitFilterCurrentFile" },
+    keys = {
+      { "lg", "<cmd>LazyGit<cr>", desc = "Open LazyGit" },
+    },
+  },
+  {
     "markdown-preview.nvim",
     -- NOTE: for_cat is a custom handler that just sets enabled value for us,
     -- based on result of nixCats('cat.name') and allows us to set a different default if we wish
