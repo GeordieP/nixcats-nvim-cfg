@@ -153,6 +153,7 @@
             vim-repeat
             plenary-nvim
             nvim-notify
+            flash-nvim
           ];
           extra = [
             nvim-web-devicons
