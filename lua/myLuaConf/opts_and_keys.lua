@@ -217,6 +217,14 @@ vim.keymap.set("v", [[p]], [["_dP]])
 vim.keymap.set("x", [["+p]], [["+p]])
 vim.keymap.set("v", [["+p]], [["+p]])
 
+-- NOTE: I mistakenly press shift+up/down a lot when I've just pressed shift-V to start a
+--       selection, and then I press down to go to the next line before fully releasing shift.
+-- FIX: In selection modes, rebind back to un-shifted up/down
+vim.keymap.set("v", "<S-Down>", "<Down>")
+vim.keymap.set("x", "<S-Down>", "<Down>")
+vim.keymap.set("v", "<S-Up>", "<Up>")
+vim.keymap.set("x", "<S-Up>", "<Up>")
+
 -- LSP
 -- Find additional LSP keybinds in `lspconfig.lua # lsp_keymaps()`
 
