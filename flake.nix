@@ -252,6 +252,7 @@
             undotree
             indent-blankline-nvim
             vim-startuptime
+            todo-comments-nvim # https://github.com/folke/todo-comments.nvim
             # If it was included in your flake inputs as plugins-hlargs,
             # this would be how to add that plugin in your config.
             # pkgs.neovimPlugins.hlargs

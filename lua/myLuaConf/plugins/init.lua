@@ -339,4 +339,5 @@ require('lze').load {
   { import = "myLuaConf.plugins.treesitter", },
   { import = "myLuaConf.plugins.completion", },
   { import = "myLuaConf.plugins.lualine", },
+  { import = "myLuaConf.plugins.todo-comments", },
 }
