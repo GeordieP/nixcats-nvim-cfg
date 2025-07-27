@@ -30,11 +30,14 @@ end
   -- didnt seem necessary.
 -- end
 
-
 require('lze').load {
-  { import = "myLuaConf.plugins.telescope", },
-  { import = "myLuaConf.plugins.treesitter", },
-  { import = "myLuaConf.plugins.completion", },
+  {
+    -- https://github.com/mg979/vim-visual-multi
+    -- Multiple cursors plugin for vim/neovim
+    "vim-visual-multi",
+    for_cat = 'general.always',
+    event = "DeferredUIEnter",
+  },
   {
     "yazi",
     for_cat = 'general.extra',
@@ -158,6 +161,8 @@ require('lze').load {
     end,
   },
   {
+    -- https://github.com/j-hui/fidget.nvim 
+    -- 💫 Extensible UI for Neovim notifications and LSP progress messages.
     "fidget.nvim",
     for_cat = 'general.extra',
     event = "DeferredUIEnter",
@@ -167,6 +172,8 @@ require('lze').load {
     end,
   },
   {
+    -- https://github.com/folke/flash.nvim
+    -- Navigate your code with search labels, enhanced character motions and Treesitter integration
     "flash",
     for_cat = 'general.always',
     after = function(plugin)
@@ -369,4 +376,7 @@ require('lze').load {
       }
     end,
   },
+  { import = "myLuaConf.plugins.telescope", },
+  { import = "myLuaConf.plugins.treesitter", },
+  { import = "myLuaConf.plugins.completion", },
 }
