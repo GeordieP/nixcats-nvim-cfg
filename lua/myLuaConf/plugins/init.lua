@@ -1,3 +1,4 @@
+-- NOTE: CODE DUPE 153007272015
 local colorschemeName = nixCats('colorscheme')
 if not require('nixCatsUtils').isNixCats then
   colorschemeName = 'onedark'
@@ -19,7 +20,6 @@ if ok then
       notify.dismiss({ silent = true, })
   end, { desc = "dismiss notify popup and clear hlsearch" })
 end
-
 -- NOTE: you can check if you included the category with the thing wherever you want.
 -- if nixCats('general.extra') then
   -- I didnt want to bother with lazy loading this.
@@ -221,47 +221,6 @@ require('lze').load {
   --   end,
   -- },
   {
-    "lualine.nvim",
-    for_cat = 'general.always',
-    -- cmd = { "" },
-    event = "DeferredUIEnter",
-    -- ft = "",
-    -- keys = "",
-    -- colorscheme = "",
-    after = function (plugin)
-
-      require('lualine').setup({
-        options = {
-          icons_enabled = false,
-          theme = colorschemeName,
-          component_separators = '|',
-          section_separators = '',
-        },
-        sections = {
-          lualine_c = {
-            {
-              'filename', path = 1, status = true,
-            },
-          },
-        },
-        inactive_sections = {
-          lualine_b = {
-            {
-              'filename', path = 3, status = true,
-            },
-          },
-          lualine_x = {'filetype'},
-        },
-        tabline = {
-          lualine_a = { 'buffers' },
-          -- if you use lualine-lsp-progress, I have mine here instead of fidget
-          -- lualine_b = { 'lsp_progress', },
-          lualine_z = { 'tabs' }
-        },
-      })
-    end,
-  },
-  {
     "gitsigns.nvim",
     for_cat = 'general.always',
     event = "DeferredUIEnter",
@@ -379,4 +338,5 @@ require('lze').load {
   { import = "myLuaConf.plugins.telescope", },
   { import = "myLuaConf.plugins.treesitter", },
   { import = "myLuaConf.plugins.completion", },
+  { import = "myLuaConf.plugins.lualine", },
 }
