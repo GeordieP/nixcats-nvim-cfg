@@ -177,7 +177,6 @@
               "tokyonight-day" = tokyonight-nvim;
             }
           );
-          # This is obviously a fairly basic usecase for this, but still nice.
       };
 
       # not loaded automatically at startup.
@@ -208,6 +207,7 @@
           markdown-preview-nvim
         ];
         neonixdev = with pkgs.vimPlugins; [
+          # https://github.com/folke/lazydev.nvim - Faster LuaLS setup for Neovim
           lazydev-nvim
         ];
         general = {
@@ -271,26 +271,26 @@
       # this section is for environmentVariables that should be available
       # at RUN TIME for plugins. Will be available to path within neovim terminal
       environmentVariables = {
-        test = {
-          default = {
-            CATTESTVARDEFAULT = "It worked!";
-          };
-          subtest1 = {
-            CATTESTVAR = "It worked!";
-          };
-          subtest2 = {
-            CATTESTVAR3 = "It didn't work!";
-          };
-        };
+        # test = {
+        #   default = {
+        #     CATTESTVARDEFAULT = "It worked!";
+        #   };
+        #   subtest1 = {
+        #     CATTESTVAR = "It worked!";
+        #   };
+        #   subtest2 = {
+        #     CATTESTVAR3 = "It didn't work!";
+        #   };
+        # };
       };
 
       # If you know what these are, you can provide custom ones by category here.
       # If you dont, check this link out:
       # https://github.com/NixOS/nixpkgs/blob/master/pkgs/build-support/setup-hooks/make-wrapper.sh
       extraWrapperArgs = {
-        test = [
-          '' --set CATTESTVAR2 "It worked again!"''
-        ];
+        # test = [
+        #   '' --set CATTESTVAR2 "It worked again!"''
+        # ];
       };
 
       # lists of the functions you would have passed to
