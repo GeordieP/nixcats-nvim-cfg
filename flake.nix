@@ -232,6 +232,7 @@
           telescope = with pkgs.vimPlugins; [
             telescope-fzf-native-nvim
             telescope-ui-select-nvim
+            telescope-undo-nvim
             telescope-nvim
           ];
           always = with pkgs.vimPlugins; [
