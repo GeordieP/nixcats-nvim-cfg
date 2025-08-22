@@ -48,6 +48,7 @@ return {
         -- See :h blink-cmp-config-keymap for configuring keymaps
         keymap =  {
           preset = 'default',
+          ["<CR>"] = { function(cmp) cmp.select_and_accept() end },
         },
         cmdline = {
           enabled = true,

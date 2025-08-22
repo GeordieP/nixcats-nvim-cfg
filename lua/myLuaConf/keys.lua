@@ -1,7 +1,5 @@
 -- KEYS --------------------------------------------------------------------
 
--- TODO: make it so `enter` or `tab` work in autocomplete popups
-
 -- NOTE: Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
