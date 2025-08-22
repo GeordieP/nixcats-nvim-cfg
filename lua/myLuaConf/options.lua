@@ -74,7 +74,7 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.inccommand = 'split'
 
 -- Indent
--- vim.o.smarttab = true -- TODO: Try both true and false in this. Default is ON (true)
+-- vim.o.smarttab = true
 
 -- Changes whether the cursor's column is remembered when navigating between lines
 vim.opt.cpoptions:append('I') -- TODO: try this out? turn it off and see what changes?
