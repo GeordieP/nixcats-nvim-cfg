@@ -48,6 +48,11 @@
     #   url = "github:nix-community/neovim-nightly-overlay";
     # };
 
+    nordic-nvim = {
+      url = "github:AlexvZyl/nordic.nvim";
+      flake = false;
+    };
+
   };
 
   # see :help nixCats.flake.outputs
@@ -161,7 +166,13 @@
             lazygit-nvim
           ];
           themes-colorschemes = [
+            lush-nvim # dependency
+            miasma-nvim
+            melange-nvim
+            everforest
+            zenbones-nvim
             gruvbox-material-nvim
+            (mkPlugin "nordic-nvim" inputs.nordic-nvim)
           ];
         };
         # You can retreive information from the
