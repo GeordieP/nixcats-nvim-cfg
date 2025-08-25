@@ -66,6 +66,10 @@
 
     rustaceanvim = {
       url = "github:mrcjkb/rustaceanvim";
+    };
+
+    telescope-menu-nvim = {
+      url = "github:octarect/telescope-menu.nvim";
       flake = false;
     };
   };
@@ -276,10 +280,11 @@
             # ))
           ];
           telescope = with pkgs.vimPlugins; [
+            telescope-nvim
+            (mkPlugin "telescope-menu-nvim" inputs.telescope-menu-nvim)
             telescope-fzf-native-nvim
             telescope-ui-select-nvim
             telescope-undo-nvim
-            telescope-nvim
           ];
           always = with pkgs.vimPlugins; [
             nvim-lspconfig
