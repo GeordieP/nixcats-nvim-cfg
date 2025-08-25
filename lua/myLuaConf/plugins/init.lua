@@ -32,6 +32,13 @@ end
 
 require('lze').load {
   {
+    -- https://github.com/octarect/telescope-menu.nvim
+    -- Build a custom telescope-based menu
+    "telescope-menu",
+    for_cat = 'general.always',
+    event = "DeferredUIEnter",
+  },
+  {
     -- https://github.com/mg979/vim-visual-multi
     -- Multiple cursors plugin for vim/neovim
     "vim-visual-multi",

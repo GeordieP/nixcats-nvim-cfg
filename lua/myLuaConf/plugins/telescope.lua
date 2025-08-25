@@ -106,6 +106,7 @@ return {
         vim.cmd.packadd(name)
         vim.cmd.packadd("telescope-fzf-native.nvim")
         vim.cmd.packadd("telescope-ui-select.nvim")
+        vim.cmd.packadd("telescope-menu.nvim")
     end,
     after = function (plugin)
       local actions = require("telescope.actions")
@@ -244,6 +245,30 @@ return {
             -- layout_config = {
             --   preview_height = 0.8,
             -- },
+          },
+        },
+
+        ['menu'] = {
+          default = {
+            items = {
+              -- INFO:
+              -- You can add an item of menu in the form of { "<display>", "<command>" }
+              --                                         or { "<display>", function() end }
+              --                                         or { display = "<display>", value = "<command>" }
+              --
+              {
+                "Light Mode",
+                function()
+                  require("user.submodules.colormode-saver").set_color_mode "light"
+                end,
+              },
+              {
+                "Dark Mode",
+                function()
+                  require("user.submodules.colormode-saver").set_color_mode "dark"
+                end,
+              },
+            },
           },
         },
       }

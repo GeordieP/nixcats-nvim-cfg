@@ -51,7 +51,24 @@
       "inputs": {
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs",
-        "nordic-nvim": "nordic-nvim"
+        "nordic-nvim": "nordic-nvim",
+        "telescope-menu-nvim": "telescope-menu-nvim"
+      }
+    },
+    "telescope-menu-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1667376064,
+        "narHash": "sha256-seD0yrCiaeXmQH/gfFKTMLafIwkoWtvyTz20VV0zgtY=",
+        "owner": "octarect",
+        "repo": "telescope-menu.nvim",
+        "rev": "9751fc0cb7041ba436c27a86f8faefc5ffe7f8bd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "octarect",
+        "repo": "telescope-menu.nvim",
+        "type": "github"
       }
     }
   },
