@@ -53,6 +53,11 @@
       flake = false;
     };
 
+    opencode-nvim = {
+      url = "github:NickvanDyke/opencode.nvim";
+      flake = false;
+    };
+
   };
 
   # see :help nixCats.flake.outputs
@@ -164,6 +169,7 @@
             nvim-web-devicons
             yazi-nvim
             lazygit-nvim
+            (mkPlugin "opencode-nvim" inputs.opencode-nvim)
           ];
           themes-colorschemes = [
             lush-nvim # dependency
