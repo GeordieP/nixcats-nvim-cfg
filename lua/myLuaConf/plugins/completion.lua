@@ -46,15 +46,18 @@ return {
       require("blink.cmp").setup({
         -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
         -- See :h blink-cmp-config-keymap for configuring keymaps
-        keymap =  {
+        keymap = {
           preset = 'default',
-          ["<CR>"] = { function(cmp) cmp.select_and_accept() end },
+          ["<CR>"] = { "accept", "fallback" },
         },
         cmdline = {
           enabled = true,
           completion = {
             menu = {
               auto_show = true,
+            },
+            list = {
+              selection = { preselect = true, auto_insert = false }
             },
           },
           sources = function()
