@@ -200,6 +200,9 @@ require('lze').load {
           -- NOTE: labels below are optimized for a split columnar COLEMAK-DH keyboard
           labels = "yquwlpjhzxkcdvatriseon",
           label = {
+            after = false,
+            before = true,
+
             rainbow = {
               enabled = true,
               -- shade = number between 1 (light) and 9 (dark)
@@ -214,6 +217,9 @@ require('lze').load {
               -- shade = 9,
             },
           },
+          modes = {
+            char = { enabled = false }
+          }
       })
     end,
     keys = {
