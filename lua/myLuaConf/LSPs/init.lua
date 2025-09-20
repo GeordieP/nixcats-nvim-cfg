@@ -94,11 +94,7 @@ require('lze').load {
     -- also these are regular specs and you can use before and after and all the other normal fields
   },
   {
-    "rust-analyzer",
-    lsp = {
-      for_cat = "rust",
-      filetypes = { "rust", "rs" },
-    },
+    "rust-analyzer"
   },
   {
     "gopls",
