@@ -140,7 +140,7 @@
           gccgo
         ];
         rust = with pkgs; [
-          rls
+          rust-analyzer
         ];
         # and easily check if they are included in lua
         format = with pkgs; [
@@ -401,6 +401,7 @@
           # enabling this category will enable the go category,
           # and ALSO debug.go and debug.default due to our extraCats in categoryDefinitions.
           # go = true; # <- disabled but you could enable it with override or module on install
+          rust = true;
 
           # this does not have an associated category of plugins, 
           # but lua can still check for it

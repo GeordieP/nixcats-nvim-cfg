@@ -94,12 +94,10 @@ require('lze').load {
     -- also these are regular specs and you can use before and after and all the other normal fields
   },
   {
-    -- NOTE: it's assumed that rls (rust language server) is installed on the system already.
-    "rls",
-    for_cat = "rust",
-    enabled = true,
+    "rust-analyzer",
     lsp = {
-      filetypes = { "rust" },
+      for_cat = "rust",
+      filetypes = { "rust", "rs" },
     },
   },
   {
