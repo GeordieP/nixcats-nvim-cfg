@@ -99,7 +99,7 @@ require('lze').load {
     for_cat = "rust",
     enabled = true,
     lsp = {
-      filetypes = { "rs" },
+      filetypes = { "rust" },
     },
   },
   {
