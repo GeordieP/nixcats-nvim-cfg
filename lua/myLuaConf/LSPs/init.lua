@@ -94,6 +94,15 @@ require('lze').load {
     -- also these are regular specs and you can use before and after and all the other normal fields
   },
   {
+    -- NOTE: it's assumed that rls (rust language server) is installed on the system already.
+    "rls",
+    for_cat = "rust",
+    enabled = true,
+    lsp = {
+      filetypes = { "rs" },
+    },
+  },
+  {
     "gopls",
     for_cat = "go",
     -- if you don't provide the filetypes it asks lspconfig for them

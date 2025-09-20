@@ -139,6 +139,9 @@
           go-tools
           gccgo
         ];
+        rust = with pkgs; [
+          rls
+        ];
         # and easily check if they are included in lua
         format = with pkgs; [
         ];
