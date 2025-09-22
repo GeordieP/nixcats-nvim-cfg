@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "flexoki-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1743635018,
+        "narHash": "sha256-vjjAulQVFS+OmpWzLkliqpan3GXlvatdaCnI96bjxC0=",
+        "owner": "nuvic",
+        "repo": "flexoki-nvim",
+        "rev": "079554c242a86be5d1a95598c7c6368d6eedd7a3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nuvic",
+        "repo": "flexoki-nvim",
+        "type": "github"
+      }
+    },
     "nixCats": {
       "locked": {
         "lastModified": 1751857141,
@@ -65,6 +81,7 @@
     },
     "root": {
       "inputs": {
+        "flexoki-nvim": "flexoki-nvim",
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs",
         "nordic-nvim": "nordic-nvim",

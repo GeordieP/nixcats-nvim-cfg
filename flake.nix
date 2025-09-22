@@ -53,6 +53,11 @@
       flake = false;
     };
 
+    flexoki-nvim = {
+      url = "github:nuvic/flexoki-nvim";
+      flake = false;
+    };
+
     opencode-nvim = {
       url = "github:NickvanDyke/opencode.nvim";
       flake = false;
@@ -182,6 +187,7 @@
             zenbones-nvim
             gruvbox-material-nvim
             (mkPlugin "nordic-nvim" inputs.nordic-nvim)
+            (mkPlugin "flexoki-nvim" inputs.flexoki-nvim)
           ];
         };
         # You can retreive information from the
@@ -195,6 +201,8 @@
               "catppuccin-mocha" = catppuccin-nvim;
               "tokyonight-night" = tokyonight-nvim;
               "tokyonight-day" = tokyonight-nvim;
+              "nordic-nvim" = nordic-nvim;
+              "flexoki-nvim" = flexoki-nvim;
             }
           );
       };
@@ -409,7 +417,9 @@
           # you could also pass something else:
           # see :help nixCats
           themer = true;
-          colorscheme = "tokyonight-day";
+          colorscheme = "flexoki-dawn"; # b/w screen, light mode
+          # colorscheme = "flexoki-moon"; # b/w screen, dark mode
+          # colorscheme = "tokyonight-night";
         };
         extra = {
           # to keep the categories table from being filled with non category things that you want to pass
