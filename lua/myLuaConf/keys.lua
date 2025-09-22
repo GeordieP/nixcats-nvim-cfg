@@ -131,6 +131,7 @@ vim.keymap.set("v", "<S-Up>", "<Up>")
 vim.keymap.set("x", "<S-Up>", "<Up>")
 
 -- LSP
+--TODO: this comment is outdated; update this:
 -- Find additional LSP keybinds in `lspconfig.lua # lsp_keymaps()`
 
 -- LSP mouse support
