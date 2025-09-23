@@ -417,9 +417,9 @@
           # you could also pass something else:
           # see :help nixCats
           themer = true;
-          colorscheme = "flexoki-dawn"; # b/w screen, light mode
+          # colorscheme = "flexoki-dawn"; # b/w screen, light mode
           # colorscheme = "flexoki-moon"; # b/w screen, dark mode
-          # colorscheme = "tokyonight-night";
+          colorscheme = "tokyonight-night";
         };
         extra = {
           # to keep the categories table from being filled with non category things that you want to pass
