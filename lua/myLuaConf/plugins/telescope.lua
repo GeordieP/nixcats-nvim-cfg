@@ -123,6 +123,7 @@ return {
 
               ["<Down>"] = actions.move_selection_next,
               ["<Up>"] = actions.move_selection_previous,
+              ["<C-q>"] = actions.send_to_qflist,
             },
             n = {
               ["<esc>"] = actions.close,
