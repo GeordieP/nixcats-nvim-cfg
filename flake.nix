@@ -172,6 +172,7 @@
             plenary-nvim
             nvim-notify
             flash-nvim
+            vim-wordmotion
           ];
           extra = [
             nvim-web-devicons
