@@ -1,5 +1,24 @@
 {
   "nodes": {
+    "fenix": {
+      "inputs": {
+        "nixpkgs": "nixpkgs",
+        "rust-analyzer-src": "rust-analyzer-src"
+      },
+      "locked": {
+        "lastModified": 1765003156,
+        "narHash": "sha256-k4YrPUhRj7Ciq385vREU57RHiDFycY5RaJwdCOmsLhU=",
+        "owner": "nix-community",
+        "repo": "fenix",
+        "rev": "e8361cc010853d17740a63aae00385061ac9de51",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "fenix",
+        "type": "github"
+      }
+    },
     "flexoki-nvim": {
       "flake": false,
       "locked": {
@@ -32,6 +51,22 @@
       }
     },
     "nixpkgs": {
+      "locked": {
+        "lastModified": 1764667669,
+        "narHash": "sha256-7WUCZfmqLAssbDqwg9cUDAXrSoXN79eEEq17qhTNM/Y=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "418468ac9527e799809c900eda37cbff999199b6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
       "locked": {
         "lastModified": 1751786137,
         "narHash": "sha256-lIlUKVGCGsh0Q2EA7/6xRtKUZjaQ/ur8uUyY+MynHXQ=",
@@ -81,11 +116,46 @@
     },
     "root": {
       "inputs": {
+        "fenix": "fenix",
         "flexoki-nvim": "flexoki-nvim",
         "nixCats": "nixCats",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": "nixpkgs_2",
         "nordic-nvim": "nordic-nvim",
-        "opencode-nvim": "opencode-nvim"
+        "opencode-nvim": "opencode-nvim",
+        "rustaceanvim": "rustaceanvim"
+      }
+    },
+    "rust-analyzer-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1764925941,
+        "narHash": "sha256-zldc1SrUIhGMdQp+0woSqvBS51Mi8PW6JukONBQXZBY=",
+        "owner": "rust-lang",
+        "repo": "rust-analyzer",
+        "rev": "2cbf3587d36dfc7b701ebb744d3dd5064355d04f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rust-lang",
+        "ref": "nightly",
+        "repo": "rust-analyzer",
+        "type": "github"
+      }
+    },
+    "rustaceanvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1764542305,
+        "narHash": "sha256-t7xAQ9sczLyA1zODmD+nEuWuLnhrfSOoPu/4G/YTGdU=",
+        "owner": "mrcjkb",
+        "repo": "rustaceanvim",
+        "rev": "6c3785d6a230bec63f70c98bf8e2842bed924245",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mrcjkb",
+        "repo": "rustaceanvim",
+        "type": "github"
       }
     }
   },
