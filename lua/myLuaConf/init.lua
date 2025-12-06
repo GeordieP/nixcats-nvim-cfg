@@ -35,3 +35,37 @@ if nixCats('format') then
 end
 -- NOTE: I didnt actually include any linters or formatters in this configuration,
 -- but it is enough to serve as an example.
+
+
+-- TODO: move to autocmds
+
+-- TODO: this is not working yet
+--       it's supposed to make it so yazi opens instantly, when we open nvim on a directory path
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    local argc = vim.fn.argc()
+    local argv = vim.v.argv
+
+    -- Skip the first argument (it's usually "nvim")
+    local paths = {}
+    for i = 1, #argv do
+      if not argv[i]:match("^%-%-") then  -- skip flags like --embed, --headless
+        table.insert(paths, argv[i])
+      end
+    end
+
+    if argc == 0 then
+      print("Started with no file or directory.")
+    else
+      -- Check the first argument passed
+      local path = paths[1]
+      local stat = vim.loop.fs_stat(path)
+
+      if stat then
+        if stat.type == "directory" then
+          require("yazi").yazi()
+        end
+      end
+    end
+  end
+})

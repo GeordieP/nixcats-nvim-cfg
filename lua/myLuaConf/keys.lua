@@ -71,6 +71,8 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "}}", "<cmd>cnext<cr>")
 vim.keymap.set("n", "{{", "<cmd>cprev<cr>")
 
+
+
 --       Initially set pageup & pagedown size (% of screen):
 --        NOTE: doesn't work
 -- vim.cmd [[:let key = nvim_replace_termcodes("1<C-u>", v:true, v:false, v:true)]]
@@ -80,8 +82,8 @@ vim.keymap.set("n", "{{", "<cmd>cprev<cr>")
 --       jump to next pair of braces
 --       NOTE: these don't work too well in elixir.
 --              maybe replace with: https://github.com/nvim-treesitter/nvim-treesitter-textobjects?tab=readme-ov-file#text-objects-move
-vim.keymap.set("n", "]]", "]]zz", { noremap = true })
-vim.keymap.set("n", "[[", "[[zz", { noremap = true })
+-- vim.keymap.set("n", "]]", "]]zz", { noremap = true })
+-- vim.keymap.set("n", "[[", "[[zz", { noremap = true })
 vim.keymap.set("n", "]m", "]mzz", { noremap = true })
 vim.keymap.set("n", "[m", "[mzz", { noremap = true })
 vim.keymap.set("n", "]M", "]Mzz", { noremap = true })
