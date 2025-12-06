@@ -24,6 +24,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixCats.url = "github:BirdeeHub/nixCats-nvim";
+    fenix.url = "github:nix-community/fenix";
 
     # see :help nixCats.flake.inputs
     # If you want your plugin to be loaded by the standard overlay,
@@ -63,6 +64,10 @@
       flake = false;
     };
 
+    rustaceanvim = {
+      url = "github:mrcjkb/rustaceanvim";
+      flake = false;
+    };
   };
 
   # see :help nixCats.flake.outputs
@@ -145,7 +150,7 @@
           gccgo
         ];
         rust = with pkgs; [
-          rust-analyzer
+          inputs.fenix.packages.${pkgs.system}.latest.toolchain
         ];
         # and easily check if they are included in lua
         format = with pkgs; [
@@ -180,6 +185,9 @@
             yazi-nvim
             lazygit-nvim
             (mkPlugin "opencode-nvim" inputs.opencode-nvim)
+          ];
+          rust = [
+            (mkPlugin "rustaceanvim" inputs.rustaceanvim)
           ];
           themes-colorschemes = [
             lush-nvim # dependency
