@@ -172,6 +172,7 @@
             plenary-nvim
             nvim-notify
             flash-nvim
+            trouble-nvim
             vim-wordmotion
           ];
           extra = [
