@@ -26,7 +26,7 @@ vim.keymap.set("n", "<C-s>", ":w<CR>", opts)
 vim.keymap.set("n", "<leader>v", "<C-w>v<C-w>h") -- vertical window split
 -- vim.keymap.set("n", "<leader>v", ":60 vsplit <CR><C-w>h", { silent = true }) -- vertical window split (60% size)
 vim.keymap.set("n", "<leader>sh", "<C-w>s") -- horizontal window split
-vim.keymap.set("n", "<leader>c", function() vim.api.nvim_win_close(0, false) end, { silent = true }) -- TODO: is there a better way to do this? I think people make plugins for this?
+-- vim.keymap.set("n", "<leader>c", function() vim.api.nvim_win_close(0, false) end, { silent = true }) -- TODO: is there a better way to do this? I think people make plugins for this?
 
 vim.keymap.set("n", "<leader>w<Left>", "<C-w>h")
 vim.keymap.set("n", "<leader>w<Down>", "<C-w>j")
@@ -70,6 +70,22 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 -- NOTE: quickfix list navigation
 vim.keymap.set("n", "}}", "<cmd>cnext<cr>")
 vim.keymap.set("n", "{{", "<cmd>cprev<cr>")
+
+
+function _G.ToggleLineNumbers()
+    -- Check if absolute line numbers are currently enabled
+    if vim.opt.number:get() == true then
+        -- If enabled, turn off both absolute and relative line numbers
+        vim.opt.number = false
+        vim.opt.relativenumber = false
+    else
+        -- If disabled, turn on absolute and relative line numbers
+        vim.opt.number = true
+        vim.opt.relativenumber = true
+    end
+end
+vim.keymap.set("n", "<C-;>", '<cmd>lua ToggleLineNumbers()<CR>')
+
 
 
 
@@ -259,6 +275,48 @@ vim.keymap.set({"n", "v", "x"}, '<leader>Y', '"+yy', { noremap = true, silent = 
 vim.keymap.set({'n', 'v', 'x'}, '<leader>p', '"+p', { noremap = true, silent = true, desc = 'Paste from clipboard' })
 vim.keymap.set('i', '<C-p>', '<C-r><C-p>+', { noremap = true, silent = true, desc = 'Paste from clipboard from within insert mode' })
 vim.keymap.set("x", "<leader>P", '"_dP', { noremap = true, silent = true, desc = 'Paste over selection without erasing unnamed register' })
+
+
+
+vim.keymap.set("n", '<leader>rn', vim.lsp.buf.rename, { desc = '[R]e[n]ame' })
+vim.keymap.set("n", '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ction' })
+
+vim.keymap.set("n", 'gd', vim.lsp.buf.definition, { desc = '[G]oto [D]efinition' })
+
+if nixCats('general.telescope') then
+  vim.keymap.set("n", 'gr', function() require('telescope.builtin').lsp_references() end, { desc = '[G]oto [R]eferences' })
+  vim.keymap.set("n", 'gI', function() require('telescope.builtin').lsp_implementations() end, { desc = '[G]oto [I]mplementation' })
+  vim.keymap.set("n", '<leader>ds', function() require('telescope.builtin').lsp_document_symbols() end, { desc = '[D]ocument [S]ymbols' })
+  vim.keymap.set("n", '<leader>ws', function() require('telescope.builtin').lsp_dynamic_workspace_symbols() end, { desc = '[W]orkspace [S]ymbols' })
+end -- TODO: someone who knows the builtin versions of these to do instead help me out please.
+
+vim.keymap.set("n", '<leader>D', vim.lsp.buf.type_definition, { desc = 'Type [D]efinition' })
+
+vim.keymap.set("n", 'K', vim.lsp.buf.hover, { desc = 'Hover Documentation' })
+vim.keymap.set("n", '<C-k>', vim.lsp.buf.signature_help, { desc = 'Signature Documentation' })
+
+-- Lesser used LSP functionality
+vim.keymap.set("n", 'gD', vim.lsp.buf.declaration, { desc = '[G]oto [D]eclaration' })
+vim.keymap.set("n", '<leader>wa', vim.lsp.buf.add_workspace_folder, { desc = '[W]orkspace [A]dd Folder' })
+vim.keymap.set("n", '<leader>wr', vim.lsp.buf.remove_workspace_folder, { desc = '[W]orkspace [R]emove Folder' })
+vim.keymap.set("n", '<leader>wl', function()
+  print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+end, { desc = '[W]orkspace [L]ist Folders' })
+
+vim.keymap.set("n", "<leader>ci", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, { desc = "Toggle [C]ode [i]nlay hints" })
+
+function _G.ToggleInlineDiagnostics()
+  local current_config = vim.diagnostic.config()
+  local current_value = current_config.virtual_text
+
+  if current_value == nil or current_value == false then
+    vim.diagnostic.config({virtual_text = true})
+  else
+    vim.diagnostic.config({virtual_text = false})
+  end
+end
+vim.keymap.set("n", "<leader>cv", '<cmd>lua ToggleInlineDiagnostics()<CR>', { desc = "Toggle [C]ode [l]ine diagnostics" })
+
 
 ----------------------------------------------------------------------------
 
