@@ -40,35 +40,60 @@ require('lze').load {
       require("trouble").setup({})
     end,
     keys = {
+      -- SECTION: Diagnostics
       {
-        "<leader>xx",
-        "<cmd>Trouble diagnostics toggle<cr>",
-        desc = "Diagnostics (Trouble)",
+        "<leader>te",
+        "<cmd>Trouble diagnostics toggle filter.severity=vim.diagnostic.severity.ERROR<cr>",
+        desc = "[t]rouble -> [e]rrors",
       },
       {
-        "<leader>xX",
-        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-        desc = "Buffer Diagnostics (Trouble)",
+        "<leader>tE",
+        "<cmd>Trouble diagnostics toggle filter.severity=vim.diagnostic.severity.ERROR filter.buf=0<cr>",
+        desc = "[t]rouble -> [E]rrors (filtered to current buffer)"
       },
       {
-        "<leader>cs",
-        "<cmd>Trouble symbols toggle focus=true<cr>",
-        desc = "Symbols (Trouble)",
+        "<leader>tw",
+        "<cmd>Trouble diagnostics toggle filter.severity=vim.diagnostic.severity.WARN<cr>",
+        desc = "[t]rouble -> [w]arnings",
+      },
+
+      -- SECTION: LSP
+      {
+        "<leader>tr",
+        "<cmd>Trouble lsp_references toggle focus=true win.position=right<cr>",
+        desc = "[t]rouble -> references",
       },
       {
-        "<leader>cl",
-        "<cmd>Trouble lsp toggle focus=true win.position=left<cr>",
-        desc = "LSP Definitions / references / ... (Trouble)",
+        "<leader>tt",
+        "<cmd>Trouble lsp_type_definitions toggle focus=true win.position=bottom<cr>",
+        desc = "[t]rouble -> [t]ype definitions",
       },
       {
-        "<leader>xL",
-        "<cmd>Trouble loclist toggle<cr>",
-        desc = "Location List (Trouble)",
+        "<leader>td",
+        "<cmd>Trouble lsp_definitions toggle focus=true win.position=bottom<cr>",
+        desc = "[t]rouble -> [d]efinitions",
       },
       {
-        "<leader>xQ",
+        "<leader>tD",
+        "<cmd>Trouble lsp_declarations toggle focus=true win.position=bottom<cr>",
+        desc = "[t]rouble -> [D]eclarations",
+      },
+      {
+        "<leader>tq",
         "<cmd>Trouble qflist toggle<cr>",
-        desc = "Quickfix List (Trouble)",
+        desc = "[t]rouble -> [q]uickfix list",
+      },
+
+      -- SECTION: PANELS
+      {
+        "<leader>ts",
+        "<cmd>Trouble symbols toggle focus=true win.position=left<cr>",
+        desc = "[t]rouble -> symbols",
+      },
+      {
+        "<leader>tl",
+        "<cmd>Trouble lsp toggle focus=true win.position=right<cr>",
+        desc = "[t]rouble -> [L]SP window (definitions, references, etc)",
       },
     },
   },
