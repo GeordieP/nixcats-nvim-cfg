@@ -152,8 +152,11 @@ require('lze').load {
     "lazygit.nvim",
     for_cat = 'general.extra',
     cmd = { "LazyGit", "LazyGitConfig", "LazyGitCurrentFile", "LazyGitFilter", "LazyGitFilterCurrentFile" },
+    after = function(plugin)
+      require('lazygit').setup()
+    end,
     keys = {
-      { "lg", "<cmd>LazyGit<cr>", desc = "Open LazyGit" },
+      { "lg", function() require("lazygit").lazygitcurrentfile() end, desc = "Open LazyGit" },
     },
   },
   {

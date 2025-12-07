@@ -171,8 +171,6 @@ vim.keymap.set("n", "<leader>gf", ":Telescope find_files<CR>", opts) -- find_fil
 vim.keymap.set("n", "gr", ":Telescope lsp_references<CR>", opts)
 
 -- Git
--- TODO: re-enable this
--- vim.keymap.set("n", "lg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts) -- calls a function defined in toggleterm.lua
 -- vim.keymap.set("n", "<leader>gb", "<cmd>:Gitsigns toggle_current_line_blame<CR>", opts)
 
 -- No Neck Pain
