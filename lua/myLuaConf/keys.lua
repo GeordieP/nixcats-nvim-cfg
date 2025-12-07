@@ -73,15 +73,10 @@ vim.keymap.set("n", "{{", "<cmd>cprev<cr>")
 
 
 function _G.ToggleLineNumbers()
-    -- Check if absolute line numbers are currently enabled
     if vim.opt.number:get() == true then
-        -- If enabled, turn off both absolute and relative line numbers
         vim.opt.number = false
-        vim.opt.relativenumber = false
     else
-        -- If disabled, turn on absolute and relative line numbers
         vim.opt.number = true
-        vim.opt.relativenumber = true
     end
 end
 vim.keymap.set("n", "<C-;>", '<cmd>lua ToggleLineNumbers()<CR>')

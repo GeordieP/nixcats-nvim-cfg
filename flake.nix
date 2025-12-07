@@ -211,8 +211,9 @@
               "catppuccin-mocha" = catppuccin-nvim;
               "tokyonight-night" = tokyonight-nvim;
               "tokyonight-day" = tokyonight-nvim;
-              "nordic-nvim" = nordic-nvim;
+              "nordic" = nordic-nvim;
               "flexoki-nvim" = flexoki-nvim;
+              "melange" = melange-nvim;
             }
           );
       };
@@ -429,7 +430,9 @@
           themer = true;
           # colorscheme = "flexoki-dawn"; # b/w screen, light mode
           # colorscheme = "flexoki-moon"; # b/w screen, dark mode
-          colorscheme = "tokyonight-night";
+          # colorscheme = "tokyonight-night";
+          colorscheme = "nordic";
+          # colorscheme = "melange";
         };
         extra = {
           # to keep the categories table from being filled with non category things that you want to pass

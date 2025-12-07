@@ -2,6 +2,7 @@
 -- NOTE: various, non-plugin config
 require('myLuaConf.options')
 require('myLuaConf.keys')
+require('myLuaConf.gui-clients')
 
 -- NOTE: register an extra lze handler with the spec_field 'for_cat'
 -- that makes enabling an lze spec for a category slightly nicer
