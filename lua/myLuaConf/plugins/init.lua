@@ -44,7 +44,30 @@ require('lze').load {
     for_cat = 'general.always',
     cmd = "Trouble",
     after = function()
-      require("trouble").setup({})
+      require("trouble").setup({
+        keys = {
+          -- GP: override `s` to allow using flash in trouble panels
+          s = {
+            action = function(view)
+              require("flash").jump()
+            end,
+            desc = "Flash",
+          },
+          -- GP: rebind trouble's default s action to S
+          S = {
+            action = function(view)
+              local f = view:get_filter("severity")
+              local severity = ((f and f.filter.severity or 0) + 1) % 5
+              view:filter({ severity = severity }, {
+                id = "severity",
+                template = "{hl:Title}Filter:{hl} {severity}",
+                del = severity == 0,
+              })
+            end,
+            desc = "Toggle Severity Filter",
+          },
+        }
+      })
     end,
     keys = {
       -- SECTION: Diagnostics
