@@ -32,6 +32,13 @@ end
 
 require('lze').load {
   {
+    "nvim-highlight-colors",
+    for_cat = 'general.extra',
+    after = function(plugin)
+      require('nvim-highlight-colors').setup({})
+    end,
+  },
+  {
     "trouble",
     -- event = "DeferredUIEnter",
     for_cat = 'general.always',

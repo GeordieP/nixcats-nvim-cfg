@@ -184,6 +184,7 @@
             nvim-web-devicons
             yazi-nvim
             lazygit-nvim
+            nvim-highlight-colors
             (mkPlugin "opencode-nvim" inputs.opencode-nvim)
           ];
           rust = [
