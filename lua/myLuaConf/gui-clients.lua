@@ -38,7 +38,7 @@ end
 --       from the fonts table below, choose a  INFO: FONT_INDEX number,
 --       then change the DEFAULT_FONT_INDEX.
 
-local DEFAULT_FONT_INDEX = 12
+local DEFAULT_FONT_INDEX = 13
 
 local gui_font_options = {
   items = {
@@ -140,6 +140,15 @@ local gui_font_options = {
       function()
         vim.opt.guifont = "Anka/Coder:h12"
         vim.opt.linespace = 5
+      end,
+    },
+
+    -- INFO: FONT_INDEX: 13
+    {
+      "[xs][ls-1] Anka/Coder:h10",
+      function()
+        vim.opt.guifont = "Anka/Coder:h10"
+        vim.opt.linespace = 1
       end,
     },
   },

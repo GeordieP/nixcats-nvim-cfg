@@ -197,6 +197,9 @@
             everforest
             zenbones-nvim
             gruvbox-material-nvim
+            kanagawa-nvim
+            kanagawa-paper-nvim
+
             (mkPlugin "nordic-nvim" inputs.nordic-nvim)
             (mkPlugin "flexoki-nvim" inputs.flexoki-nvim)
           ];
@@ -215,6 +218,8 @@
               "nordic" = nordic-nvim;
               "flexoki-nvim" = flexoki-nvim;
               "melange" = melange-nvim;
+              "kanagawa" = kanagawa-nvim;
+              "kanagawa-paper" = kanagawa-paper-nvim;
             }
           );
       };
@@ -431,9 +436,10 @@
           themer = true;
           # colorscheme = "flexoki-dawn"; # b/w screen, light mode
           # colorscheme = "flexoki-moon"; # b/w screen, dark mode
-          colorscheme = "tokyonight-night";
+          # colorscheme = "tokyonight-night";
           # colorscheme = "nordic";
           # colorscheme = "melange";
+          colorscheme = "kanagawa-paper";
         };
         extra = {
           # to keep the categories table from being filled with non category things that you want to pass
