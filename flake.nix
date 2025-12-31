@@ -431,8 +431,8 @@
           themer = true;
           # colorscheme = "flexoki-dawn"; # b/w screen, light mode
           # colorscheme = "flexoki-moon"; # b/w screen, dark mode
-          # colorscheme = "tokyonight-night";
-          colorscheme = "nordic";
+          colorscheme = "tokyonight-night";
+          # colorscheme = "nordic";
           # colorscheme = "melange";
         };
         extra = {
