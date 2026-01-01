@@ -35,6 +35,22 @@
         "type": "github"
       }
     },
+    "kanagawa-paper-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1766908478,
+        "narHash": "sha256-i/XsUnHznQFJZrbr+oM1fuAcnsE7XFA9OFfqSoThHLY=",
+        "owner": "thesimonho",
+        "repo": "kanagawa-paper.nvim",
+        "rev": "25d3656a187c9596647b73abb71521f0339616c7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "thesimonho",
+        "repo": "kanagawa-paper.nvim",
+        "type": "github"
+      }
+    },
     "nixCats": {
       "locked": {
         "lastModified": 1751857141,
@@ -118,6 +134,7 @@
       "inputs": {
         "fenix": "fenix",
         "flexoki-nvim": "flexoki-nvim",
+        "kanagawa-paper-nvim": "kanagawa-paper-nvim",
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs_2",
         "nordic-nvim": "nordic-nvim",

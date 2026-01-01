@@ -72,6 +72,11 @@
       url = "github:octarect/telescope-menu.nvim";
       flake = false;
     };
+
+    kanagawa-paper-nvim = {
+      url = "github:thesimonho/kanagawa-paper.nvim";
+      flake = false;
+    };
   };
 
   # see :help nixCats.flake.outputs
@@ -203,10 +208,10 @@
             zenbones-nvim
             gruvbox-material-nvim
             kanagawa-nvim
-            kanagawa-paper-nvim
 
             (mkPlugin "nordic-nvim" inputs.nordic-nvim)
             (mkPlugin "flexoki-nvim" inputs.flexoki-nvim)
+            (mkPlugin "kanagawa-paper-nvim" inputs.kanagawa-paper-nvim)
           ];
         };
         # You can retreive information from the
