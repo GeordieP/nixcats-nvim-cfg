@@ -66,6 +66,10 @@
 
     rustaceanvim = {
       url = "github:mrcjkb/rustaceanvim";
+    };
+
+    telescope-menu = {
+      url = "github:octarect/telescope-menu.nvim";
       flake = false;
     };
   };
@@ -186,6 +190,7 @@
             lazygit-nvim
             nvim-highlight-colors
             (mkPlugin "opencode-nvim" inputs.opencode-nvim)
+            (mkPlugin "telescope-menu" inputs.telescope-menu)
           ];
           rust = [
             (mkPlugin "rustaceanvim" inputs.rustaceanvim)
@@ -276,10 +281,10 @@
             # ))
           ];
           telescope = with pkgs.vimPlugins; [
+            telescope-nvim
             telescope-fzf-native-nvim
             telescope-ui-select-nvim
             telescope-undo-nvim
-            telescope-nvim
           ];
           always = with pkgs.vimPlugins; [
             nvim-lspconfig

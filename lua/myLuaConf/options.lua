@@ -87,3 +87,12 @@ vim.opt.cpoptions:append('I') -- TODO: try this out? turn it off and see what ch
 
 -- stops line wrapping from being confusing
 vim.o.breakindent = true -- TODO: try this out? turn it off and see what changes?
+
+-- INFO: default color mode (light or dark)
+
+local initial_colormode = require("myLuaConf.colormode-saver").get_color_mode()
+if initial_colormode == "light" then
+  vim.o.background = "light"
+else
+  vim.o.background = "dark"
+end
