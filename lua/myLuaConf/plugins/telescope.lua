@@ -94,12 +94,13 @@ return {
       { "<leader>sc", function() return require('telescope.builtin').colorscheme() end, mode = {"n"}, desc = '[S]earch [C]olorschemes', },
       { "<leader>sj", function() return require('telescope.builtin').jumplist() end, mode = {"n"}, desc = '[S]earch [J]jumplist', },
       { "<leader>sp", function() return require('telescope.builtin').planets() end, mode = {"n"}, desc = '[S]earch [P]lanets', }, -- GP: VERY important
+      -- SECTION: Telescope menu; uses telescope-menu.nvim. custom menu options.
+      { "<leader>mm", "<cmd>Telescope menu<cr>", mode = {"n"}, desc = '[MM]enu (root)', },
+      { "<leader>mn", "<cmd>Telescope menu neovide<cr>", mode = {"n"}, desc = '[M]enu for [N]eovide'},
+      { "<leader>mf", "<cmd>Telescope menu format<cr>", mode = {"n"}, desc = '[M]enu for [F]ormatting'},
+      { "<leader>mh", "<cmd>Telescope menu help_tags<cr>", mode = {"n"}, desc = '[M]enu for [H]elp menu / User manual search'},
       -- TODO: undo isn't working just yet, package does not seem to be installed right
       { "<leader>su", function() return require('telescope').extensions.undo.undo() end, mode = {"n"}, desc = '[S]earch [U]ndo history', }, -- GP: uses telescope-undo.nvim. undo/redo history for current buffer
-      -- GP: TODO: <leader>slr search lsp references? sr would collide with `search resume`
-      -- GP: TODO: other lsp things (see pickers setup below for some initial ones to support)
-      -- GP: TODO: lsp ccode actions? (this was in old config but not through telescope https://github.com/gp-config/nvim/blob/main/lua/user/whichkey.lua#L107) -- NOTE: telescope-ui-select plugin already in here might do this automatically??
-      -- GP: TODO: telescope custom menu https://github.com/gp-config/nvim/blob/main/lua/user/telescope-menu.lua -- go through this and remove anything unsupported
     },
     -- colorscheme = "",
     load = function (name)
@@ -247,29 +248,67 @@ return {
             --   preview_height = 0.8,
             -- },
           },
-        },
 
-        ['menu'] = {
-          default = {
-            items = {
-              -- INFO:
-              -- You can add an item of menu in the form of { "<display>", "<command>" }
-              --                                         or { "<display>", function() end }
-              --                                         or { display = "<display>", value = "<command>" }
-              --
-              {
-                "Light Mode",
-                function()
-                  require("user.submodules.colormode-saver").set_color_mode "light"
-                end,
-              },
-              {
-                "Dark Mode",
-                function()
-                  require("user.submodules.colormode-saver").set_color_mode "dark"
-                end,
+          menu = {
+            default = {
+              items = {
+                -- INFO:
+                -- You can add an item of menu in the form of { "<display>", "<command>" }
+                --                                         or { "<display>", function() end }
+                --                                         or { display = "<display>", value = "<command>" }
+                --
+                {
+                  "Light Mode",
+                  function()
+                    require("myLuaConf.colormode-saver").set_color_mode "light"
+                  end,
+                },
+                {
+                  "Dark Mode",
+                  function()
+                    require("myLuaConf.colormode-saver").set_color_mode "dark"
+                  end,
+                },
+
+                { "SUBMENU: Theme / Colorscheme", "Telescope colorscheme" },
+                { "SUBMENU: Help Tags / User Manual", "Telescope help_tags" },
+                { "TreeSitter: InspectTree", "InspectTree" },
+                { "Undo/Redo History for current buffer", "Telescope undo" }, -- TODO: fix the undo plugin and re-enable this one
+                { "Jumplist History", "Telescope jumplist" },
+                { "List TODO Comments (Telescope)", "TodoTelescope keywords=TODO" },
+                { "LspInfo", "LspInfo" },
+                { "LSP: Rename symbol under cursor", "lua vim.lsp.buf.rename()" },
+
+                { "SUBMENU: Format", "Telescope menu format" },
+
+                { "SUBMENU: Neovide", "Telescope menu neovide" },
+
+                -- SECTION: end default
               },
             },
+
+            format = {
+              -- TODO: add one to run the LSP formatter
+              items = {
+                { "Remove all trailing whitespace", "%s/\\s\\+$//e" },
+              },
+            },
+
+            neovide = {
+              items = {
+                { "Change font", "Telescope menu gui_font" },
+              },
+            },
+
+            gui_font = require("myLuaConf.gui-clients").gui_font_options or {
+              items = {
+                {
+                  "This does not appear to be a GUI client, so there are no font options here.",
+                  "echo",
+                },
+              },
+            },
+
           },
         },
       }
@@ -278,6 +317,7 @@ return {
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
       pcall(require('telescope').load_extension, 'undo')
+      pcall(require('telescope').load_extension, 'menu')
 
       vim.api.nvim_create_user_command('LiveGrepGitRoot', live_grep_git_root, {})
 

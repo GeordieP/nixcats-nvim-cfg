@@ -122,7 +122,8 @@
         "nixpkgs": "nixpkgs_2",
         "nordic-nvim": "nordic-nvim",
         "opencode-nvim": "opencode-nvim",
-        "rustaceanvim": "rustaceanvim"
+        "rustaceanvim": "rustaceanvim",
+        "telescope-menu": "telescope-menu"
       }
     },
     "rust-analyzer-src": {
@@ -155,6 +156,22 @@
       "original": {
         "owner": "mrcjkb",
         "repo": "rustaceanvim",
+        "type": "github"
+      }
+    },
+    "telescope-menu": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1756491301,
+        "narHash": "sha256-bJj3/dixtNffsAGeWn0LsIVE1aUff8IdcuY3W4JBZbk=",
+        "owner": "octarect",
+        "repo": "telescope-menu.nvim",
+        "rev": "aa70dce1f130bcfd3f4e91331c4be55a18b8f59c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "octarect",
+        "repo": "telescope-menu.nvim",
         "type": "github"
       }
     }

@@ -32,13 +32,6 @@ end
 
 require('lze').load {
   {
-    -- https://github.com/octarect/telescope-menu.nvim
-    -- Build a custom telescope-based menu
-    "telescope-menu",
-    for_cat = 'general.always',
-    event = "DeferredUIEnter",
-  },
-  {
     "nvim-highlight-colors",
     for_cat = 'general.extra',
     after = function(plugin)
