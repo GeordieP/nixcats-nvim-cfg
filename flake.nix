@@ -225,7 +225,7 @@
               "melange" = melange-nvim;
               "kanagawa" = kanagawa-nvim;
               "kanagawa-paper" = kanagawa-paper-nvim;
-              "kanagawa-paper-ink" = kanagawa-paper-nvim;
+              # "kanagawa-paper-ink" = kanagawa-paper-nvim;
             }
           );
       };
@@ -445,7 +445,7 @@
           # colorscheme = "tokyonight-night";
           # colorscheme = "nordic";
           # colorscheme = "melange";
-          colorscheme = "kanagawa-paper-ink";
+          colorscheme = "kanagawa-paper";
         };
         extra = {
           # to keep the categories table from being filled with non category things that you want to pass
