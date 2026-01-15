@@ -4,6 +4,57 @@ Custom nix-based neovim config with lua integration
 
 Thanks to: https://github.com/BirdeeHub/nixCats-nvim
 
+---
+
+# -- notepad --
+
+
+
+## keybind reminders
+
+| KEYS                                  |                                                                             |
+| ------------------------------------- | --------------------------------------------------------------------------- |
+| `<leader>/`                           | opens a fuzzy finder w/preview, for text in the current buffer              |
+| `<C-up> or <C-down>`                  | add a multi-cursor on the above line or below line                          |
+|                                       |                                                                             |
+
+
+
+
+## TODO: modules still to port:
+
+
+- https://github.com/gp-config/nvim/blob/main/lua/user/actions-preview.lua
+- https://github.com/gp-config/nvim/blob/main/lua/user/cloak.lua
+- https://github.com/gp-config/nvim/blob/main/lua/user/dap.lua
+- https://github.com/gp-config/nvim/blob/main/lua/user/dapinstall.lua
+    - maybe not; can nix take care of this?
+- https://github.com/gp-config/nvim/blob/main/lua/user/dapui.lua
+- https://github.com/gp-config/nvim/blob/main/lua/user/diffview.lua
+- https://github.com/gp-config/nvim/blob/main/lua/user/hotpot.lua
+    - fennel language support
+- https://github.com/gp-config/nvim/blob/main/lua/user/icons.lua
+    - [ ] where is this used?
+- https://github.com/RRethy/vim-illuminate
+    - maybe not; have been preferring to use custom `*` lately (REF: 1768444198422)
+- https://github.com/gp-config/nvim/blob/main/lua/user/lualine.lua
+- https://github.com/gp-config/nvim/blob/main/lua/user/mini.lua
+    - [ ] maybe some extra config in here that hasnt been ported?
+- https://github.com/gp-config/nvim/blob/main/lua/user/navbuddy.lua
+    - not yet, trouble's symbols mode has been fine so far
+- https://github.com/gp-config/nvim/blob/main/lua/user/navic.lua
+- https://github.com/SchemaStore/schemastore
+- https://github.com/gp-config/nvim/blob/main/lua/user/treesitter.lua
+    - [ ] port custom config
+
+
+
+---
+
+
+# DEFAULT README:
+---
+
 # Example `nixCats` Configuration
 
 This directory contains an example of the suggested, idiomatic way to manage a neovim configuration using `nixCats`. It leverages [`lze`](https://github.com/BirdeeHub/lze) for lazy loading, although [`lz.n`](https://github.com/nvim-neorocks/lz.n) can be used instead to similar effect. It also includes a fallback mechanism using `paq` and `mason`, allowing you to load the directory without `nix` if needed.

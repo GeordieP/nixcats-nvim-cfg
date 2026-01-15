@@ -212,7 +212,8 @@ vim.keymap.set("n", "gr", ":Telescope lsp_references<CR>", opts)
 -- Manually open the completion menu
 vim.keymap.set("n", "<C-CR>", "lua cmp.complete({reason = cmp.ContextReason.Auto})", opts)
 
--- INFO: rebind * to not jump to the next occurrence
+-- REF: 1768444198422
+-- INFO: rebind * to not jump to the next occurrence; but rather highlight all occurrences
 vim.keymap.set("n", "*", "<cmd>let @/ = expand('<cword>') | set hlsearch<cr>")
 -- TODO: Make this work in visual and visual-block mode too
 -- vim.keymap.set("v", "*", "<cmd>let @/ = expand('<cword>') | set hlsearch<cr>")
