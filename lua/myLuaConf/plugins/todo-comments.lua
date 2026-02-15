@@ -18,6 +18,7 @@
 -- WARN:
 -- WARNING:
 -- XXX:
+-- TEMP:
 -- PERF:
 -- PERFORMANCE:
 -- OPTIM:
@@ -73,7 +74,7 @@ return {
           TODO = { icon = " ", color = "error", alt = { "LATER" } },
           HACK = { icon = " ", color = "warning" },
           WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
-          PERF = { icon = "󱦺 ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+          PERF = { icon = "󱦺 ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE", "TEMP" } },
           NOTE = { icon = "󰍨 ", color = "hint" },
           TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
 
