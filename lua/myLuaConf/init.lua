@@ -70,3 +70,33 @@ vim.api.nvim_create_autocmd("VimEnter", {
     end
   end
 })
+
+-- INFO: disable the default color schemes, so the colorscheme picker is less cluttered with things I won't use
+vim.opt.wildignore:append({
+  "blue.vim",
+  "darkblue.vim",
+  "delek.vim",
+  "desert.vim",
+  "elflord.vim",
+  "evening.vim",
+  "industry.vim",
+  "habamax.vim",
+  "koehler.vim",
+  "lunaperche.vim",
+  "morning.vim",
+  "murphy.vim",
+  "pablo.vim",
+  "peachpuff.vim",
+  "quiet.vim",
+  "ron.vim",
+  "shine.vim",
+  "slate.vim",
+  "sorbet.vim",
+  "retrobox.vim",
+  "torte.vim",
+  "unokai.vim",
+  "wildcharm.vim",
+  "zaibatsu.vim",
+  "zellner.vim",
+})
+
