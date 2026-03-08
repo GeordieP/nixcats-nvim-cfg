@@ -6,8 +6,7 @@ vim.opt.cmdheight = 1 -- more space in the neovim command line for displaying me
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp -- TODO: these may need to change. original value
 -- vim.o.completeopt = 'menu,preview,noselect' -- TODO: this is the nixcats default
 
--- vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
-vim.opt.conceallevel = 1 -- so that the obsidian plugin can render fancy checkboxes
+vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
 -- vim.opt.fileencoding = "utf-8" -- the encoding written to a file
 vim.opt.hlsearch = false -- highlight all matches on previous search pattern
 vim.opt.ignorecase = true -- ignore case in search patterns
