@@ -32,6 +32,13 @@ end
 
 require('lze').load {
   {
+    "mini.align",
+    for_cat = 'general.extra',
+    after = function(plugin)
+      require('mini.align').setup({})
+    end,
+  },
+  {
     "nvim-highlight-colors",
     for_cat = 'general.extra',
     after = function(plugin)

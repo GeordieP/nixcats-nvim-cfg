@@ -188,6 +188,7 @@
             flash-nvim
             trouble-nvim
             vim-wordmotion
+            mini-align
           ];
           extra = [
             nvim-web-devicons
