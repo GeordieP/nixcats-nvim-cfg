@@ -249,14 +249,28 @@ return {
             -- },
           },
 
+          -- SECTION: TELESCOPE MENU SETTINGS
           menu = {
             default = {
               items = {
                 -- INFO:
-                -- You can add an item of menu in the form of { "<display>", "<command>" }
-                --                                         or { "<display>", function() end }
-                --                                         or { display = "<display>", value = "<command>" }
+                -- You can add an item of menu in the form of { "<display>", "<command>" },
+                --                                         or { "<display>", function() end },
+                --                                         or { display = "<display>", value = "<command>" },
                 --
+                {
+                  "Insert current date timestamp (JS Date.now() equivalent)",
+                  function ()
+                    local sec, usec = vim.uv.gettimeofday()
+
+                    -- Calculation for JS Date.now() equivalent
+                    -- (seconds * 1000) + (microseconds / 1000)
+                    local ms = (sec * 1000) + math.floor(usec / 1000)
+
+                    -- Convert to string and insert
+                    vim.api.nvim_put({tostring(ms)}, "c", true, true)
+                  end
+                },
                 {
                   "Light Mode",
                   function()
