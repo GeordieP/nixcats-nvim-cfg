@@ -293,8 +293,10 @@ return {
                 { "LspInfo", "LspInfo" },
                 { "LSP: Rename symbol under cursor", "lua vim.lsp.buf.rename()" },
 
-                { "SUBMENU: Format", "Telescope menu format" },
+                -- NOTE: 1775243330745 duplicate; make font changing available on the top level menu
+                { "Change font (GUI clients like Neovide only)", "Telescope menu gui_font" },
 
+                { "SUBMENU: Format", "Telescope menu format" },
                 { "SUBMENU: Neovide", "Telescope menu neovide" },
 
                 -- SECTION: end default
@@ -310,9 +312,11 @@ return {
 
             neovide = {
               items = {
+                -- NOTE: 1775243330745 duplicate; make font changing available from the neovide menu
                 { "Change font", "Telescope menu gui_font" },
               },
             },
+
 
             gui_font = require("myLuaConf.gui-clients").gui_font_options or {
               items = {

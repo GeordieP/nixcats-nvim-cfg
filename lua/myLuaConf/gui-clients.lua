@@ -32,130 +32,115 @@ else
 end
 
 -- NOTE: This gui_font_options table is used in telescope-menu.lua,
---       and so it follows the telescope-menu command structure.
+--       and so it gets mapped to the telescope-menu command structure.
 --
 --       To change the default GUI font:
---       from the fonts table below, choose a  INFO: FONT_INDEX number,
---       then change the DEFAULT_FONT_INDEX.
+--       in the row that should be default, change nil to true.
+--       Make sure no other rows are also true.
 
-local DEFAULT_FONT_INDEX = 13
+--       Format the table using   vi{gas,
 
-local gui_font_options = {
-  items = {
-    -- SECTION: [sm]
-    -- INFO: FONT_INDEX: 1
-    {
-      "[sm] Monaspace Xenon:h9 | linespace 4",
-      function()
-        vim.opt.guifont = "Monaspace Xenon:h9"
-        vim.opt.linespace = 4
-      end,
-    },
-    -- INFO: FONT_INDEX: 2
-    {
-      "[sm] Berkeley Mono Variable:h9 | linespace 0",
-      function()
-        vim.opt.guifont = "Berkeley Mono Variable:h9"
-        vim.opt.linespace = 0
-      end,
-    },
-    -- INFO: FONT_INDEX: 3
-    {
-      "[sm] Berkeley Mono Variable:h10 | linespace 0",
-      function()
-        vim.opt.guifont = "Berkeley Mono Variable:h10"
-        vim.opt.linespace = 0
-      end,
-    },
-    -- SECTION: [md]
-    -- INFO: FONT_INDEX: 4
-    {
-      "[md] JetBrains Mono:h11 | linespace 5",
-      function()
-        vim.opt.guifont = "JetBrains Mono:h11"
-        vim.opt.linespace = 5
-      end,
-    },
-    -- INFO: FONT_INDEX: 5
-    {
-      "[lg][ls-3] Monaspace Xenon:h10",
-      function()
-        vim.opt.guifont = "Monaspace Xenon:h10"
-        vim.opt.linespace = 3
-      end,
-    },
-    -- INFO: FONT_INDEX: 6
-    {
-      "[md][ls-0] Berkeley Mono Variable:h11",
-      function()
-        vim.opt.guifont = "Berkeley Mono Variable:h11"
-        vim.opt.linespace = 0
-      end,
-    },
-    -- INFO: FONT_INDEX: 7
-    {
-      "[md][ls-5] Berkeley Mono Variable:h11",
-      function()
-        vim.opt.guifont = "Berkeley Mono Variable:h11"
-        vim.opt.linespace = 5
-      end,
-    },
-    -- SECTION: [lg]
-    -- INFO: FONT_INDEX: 8
-    {
-      "[lg][ls-8] Monaspace Xenon SemiBold:h11",
-      function()
-        vim.opt.guifont = "Monaspace Xenon SemiBold:h11"
-        vim.opt.linespace = 8
-      end,
-    },
-    -- INFO: FONT_INDEX: 9
-    {
-      "[lg][ls-5] Berkeley Mono Variable:h12",
-      function()
-        vim.opt.guifont = "Berkeley Mono Variable:h12"
-        vim.opt.linespace = 5
-      end,
-    },
-    -- INFO: FONT_INDEX: 10
-    {
-      "[lg][ls-0] Berkeley Mono Variable:h12",
-      function()
-        vim.opt.guifont = "Berkeley Mono Variable:h12"
-        vim.opt.linespace = 0
-      end,
-    },
-    -- SECTION: [xl]
-    -- INFO: FONT_INDEX: 11
-    {
-      "[xl][ls-8] Monaspace Xenon SemiBold:h13",
-      function()
-        vim.opt.guifont = "Monaspace Xenon SemiBold:h13"
-        vim.opt.linespace = 8
-      end,
-    },
-    -- INFO: FONT_INDEX: 12
-    {
-      "[xl][ls-5] Anka/Coder:h12",
-      function()
-        vim.opt.guifont = "Anka/Coder:h12"
-        vim.opt.linespace = 5
-      end,
-    },
-
-    -- INFO: FONT_INDEX: 13
-    {
-      "[xs][ls-1] Anka/Coder:h10",
-      function()
-        vim.opt.guifont = "Anka/Coder:h10"
-        vim.opt.linespace = 1
-      end,
-    },
-  },
+local gui_fonts_configuration_table = {
+--+---------------------------------------------------------------------------- +
+-- is          , font     , line       , font                                  ,
+-- default [1] , size  [2], spacing [3], name [4]                              ,
+  {nil         , 10       , 1          , "Anka/Coder"                          ,},
+  {nil         , 12       , 2          , "Anka/Coder"                          ,},
+  {nil         , 12       , 5          , "Anka/Coder"                          ,},
+  {nil         , 14       , 8          , "Anka/Coder"                          ,},
+  {nil         , 9        , 0          , "Berkeley Mono Variable"              ,},
+  {true        , 10       , 0          , "Berkeley Mono Variable"              ,},
+  {nil         , 10       , 5          , "Berkeley Mono Variable"              ,},
+  {nil         , 11       , 0          , "Berkeley Mono Variable"              ,},
+  {nil         , 11       , 5          , "Berkeley Mono Variable"              ,},
+  {nil         , 12       , 0          , "Berkeley Mono Variable"              ,},
+  {nil         , 12       , 5          , "Berkeley Mono Variable"              ,},
+  {nil         , 9        , 0          , "Monaspace Xenon"                     ,},
+  {nil         , 9        , 4          , "Monaspace Xenon"                     ,},
+  {nil         , 10       , 3          , "Monaspace Xenon"                     ,},
+  {nil         , 11       , 8          , "Monaspace Xenon"                     ,},
+  {nil         , 11       , 8          , "Monaspace Xenon"                     ,},
+  {nil         , 13       , 8          , "Monaspace Xenon"                     ,},
+  {nil         , 9        , 0          , "JetBrains Mono"                      ,},
+  {nil         , 10       , 3          , "JetBrains Mono"                      ,},
+  {nil         , 11       , 5          , "JetBrains Mono"                      ,},
 }
 
-gui_font_options.items[DEFAULT_FONT_INDEX][2]()
+local function map_fonts_table(fonts_table)
+  local mapped_rows = {}
+  local found_default_idx = -1
+
+  for row_idx, row in ipairs(fonts_table) do
+    if row[1] == true then
+      found_default_idx = row_idx
+    end
+
+    local h_text
+    if row[2] > 9 then
+      h_text = "[h"  .. row[2] .. "] "
+    else
+      h_text = "[h " .. row[2] .. "] "
+    end
+
+    local ls_text
+    if row[3] > 9 then
+      ls_text = "[ls"  .. row[3] .. "] "
+    else
+      ls_text = "[ls " .. row[3] .. "] "
+    end
+
+    mapped_rows[row_idx] = {
+      -- INFO: h_text and ls_text are repeated for telescope-menu SEO,
+      --       so that e.g. 'berk115' will match 'Berkeley Mono Variable [h11][ls 5]'
+      h_text .. ls_text .. row[4] .. " " .. h_text .. ls_text,
+      function()
+        local guifont = row[4] .. ":h" .. row[2]
+        local linespace = row[3]
+        vim.opt.guifont = guifont
+        vim.opt.linespace = linespace
+      end
+    }
+  end
+
+  -- INFO: append an extra action which prompts the user to set a custom font string
+  mapped_rows[#mapped_rows + 1] = {
+    "Custom size: Manually set a font string (e.g: JetBrains Mono:h12)",
+    function()
+      vim.ui.input({ prompt = "Font string (e.g: JetBrains Mono:h12): " }, function(input)
+        if input == nil then
+          print("Cancelled")
+        else
+          vim.opt.guifont = input
+          print("✔  Set vim.opt.guifont to: " .. input)
+        end
+      end)
+    end
+  }
+
+  -- INFO: append an extra action which prompts the user to set a custom line spacing
+  mapped_rows[#mapped_rows + 1] = {
+    "Custom spacing: Manually set a line spacing / line height (e.g: 4)",
+    function()
+      vim.ui.input({ prompt = "Spacing: (e.g: 4): " }, function(input)
+        if input == nil then
+          print("Cancelled")
+        else
+          vim.opt.linespace = tonumber(input)
+          print("✔  Set vim.opt.linespace to: " .. tonumber(input))
+        end
+      end)
+    end
+  }
+
+  -- INFO: SIDE EFFECT: If some row was marked as the default, run its function now.
+  if found_default_idx > -1 then
+    mapped_rows[found_default_idx][2]()
+  end
+
+  return mapped_rows
+end
 
 local M = {}
-M.gui_font_options = gui_font_options
+M.gui_font_options = { items = map_fonts_table(gui_fonts_configuration_table) }
 return M
+
