@@ -124,7 +124,7 @@ require('lze').load {
       -- SECTION: PANELS
       {
         "<leader>ts",
-        "<cmd>Trouble symbols toggle focus=true win.position=left<cr>",
+        "<cmd>Trouble symbols toggle focus=true win.position=top<cr>",
         desc = "[t]rouble -> symbols",
       },
       {
