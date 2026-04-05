@@ -189,6 +189,9 @@
             trouble-nvim
             vim-wordmotion
             mini-align
+            vim-dadbod
+            vim-dadbod-ui
+            vim-dadbod-completion
           ];
           extra = [
             nvim-web-devicons

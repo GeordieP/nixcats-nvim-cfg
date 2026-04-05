@@ -31,6 +31,20 @@ end
 -- end
 
 require('lze').load {
+  -- Dadbod{
+  {
+    "vim-dadbod-ui",
+    for_cat = 'general.extra',
+  },
+  {
+    "vim-dadbod-completion",
+    for_cat = 'general.extra',
+  },
+  {
+    "vim-dadbod",
+    for_cat = 'general.extra',
+  },
+  -- }Dadbod
   {
     "mini.align",
     for_cat = 'general.extra',
