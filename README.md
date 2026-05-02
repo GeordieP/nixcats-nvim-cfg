@@ -25,7 +25,6 @@ Thanks to: https://github.com/BirdeeHub/nixCats-nvim
 
 
 - https://github.com/gp-config/nvim/blob/main/lua/user/actions-preview.lua
-- https://github.com/gp-config/nvim/blob/main/lua/user/cloak.lua
 - https://github.com/gp-config/nvim/blob/main/lua/user/dap.lua
 - https://github.com/gp-config/nvim/blob/main/lua/user/dapinstall.lua
     - maybe not; can nix take care of this?
@@ -37,7 +36,6 @@ Thanks to: https://github.com/BirdeeHub/nixCats-nvim
     - [ ] where is this used?
 - https://github.com/RRethy/vim-illuminate
     - maybe not; have been preferring to use custom `*` lately (REF: 1768444198422)
-- https://github.com/gp-config/nvim/blob/main/lua/user/lualine.lua
 - https://github.com/gp-config/nvim/blob/main/lua/user/mini.lua
     - [ ] maybe some extra config in here that hasnt been ported?
 - https://github.com/gp-config/nvim/blob/main/lua/user/navbuddy.lua

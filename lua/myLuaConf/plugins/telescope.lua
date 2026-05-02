@@ -292,6 +292,8 @@ return {
                 { "List TODO Comments (Telescope)", "TodoTelescope keywords=TODO" },
                 { "LspInfo", "LspInfo" },
                 { "LSP: Rename symbol under cursor", "lua vim.lsp.buf.rename()" },
+                { "Cloak: Toggle", "CloakToggle" },
+                { "Cloak: Preview Line", "CloakPreviewLine" },
 
                 -- NOTE: 1775243330745 duplicate; make font changing available on the top level menu
                 { "Change font (GUI clients like Neovide only)", "Telescope menu gui_font" },
