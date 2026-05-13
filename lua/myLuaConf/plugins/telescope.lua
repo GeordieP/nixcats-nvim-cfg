@@ -249,7 +249,7 @@ return {
             -- },
           },
 
-          -- SECTION: TELESCOPE MENU SETTINGS
+          -- SECTION: telescope-menu CONFIG & SETTINGS
           menu = {
             default = {
               items = {
@@ -296,10 +296,10 @@ return {
                 { "Cloak: Preview Line", "CloakPreviewLine" },
 
                 -- NOTE: 1775243330745 duplicate; make font changing available on the top level menu
-                { "Change font (GUI clients like Neovide only)", "Telescope menu gui_font" },
-
-                { "SUBMENU: Format", "Telescope menu format" },
-                { "SUBMENU: Neovide", "Telescope menu neovide" },
+                { "Change font...          => GUI clients like Neovide only", "Telescope menu gui_font" },
+                { "Neovide...              => Neovide settings (only available in GUI clients", "Telescope menu neovide" },
+                { "Code formatting...      => Code formatting operations", "Telescope menu format" },
+                { "Indentation settings... => Set number of spaces to indent, tab width, etc", "Telescope menu indent_settings" },
 
                 -- SECTION: end default
               },
@@ -319,6 +319,24 @@ return {
               },
             },
 
+            indent_settings = {
+              items = {
+                -- { "Auto-detect from current file", "lua print 'todo: Auto-detect from current file is not yet implemented'" },
+                { "2 spaces", function()
+                  vim.opt.shiftwidth  = 2 -- the number of spaces inserted for each auto-indent
+                  vim.opt.softtabstop = 2 -- number of spaces inserted when pressing tab
+                  vim.opt.tabstop     = 2 -- width of a tab character, measured in spaces
+                end
+                },
+                { "4 spaces", function()
+                  vim.opt.shiftwidth  = 4 -- the number of spaces inserted for each auto-indent
+                  vim.opt.softtabstop = 4 -- number of spaces inserted when pressing tab
+                  vim.opt.tabstop     = 4 -- width of a tab character, measured in spaces
+                end
+                },
+              },
+            },
+
 
             gui_font = require("myLuaConf.gui-clients").gui_font_options or {
               items = {
@@ -328,6 +346,7 @@ return {
                 },
               },
             },
+
 
           },
         },
