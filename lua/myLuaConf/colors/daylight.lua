@@ -210,7 +210,7 @@ local theme = lush(function(injected_functions)
 
     -- See :h diagnostic-highlights, some groups may not be listed, submit a PR fix to lush-template!
 
-    DiagnosticError { fg = Normal.bg, bg = Normal.fg, gui = "strikethrough"  }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    DiagnosticError { fg = weak_gray, bg = Normal.fg, gui = "strikethrough"  }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     DiagnosticWarn { fg = Normal.fg, bg = Normal.bg, gui = "underdotted" }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     DiagnosticInfo { fg = Normal.fg, bg = Normal.bg, gui = "underdotted" }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     DiagnosticHint { fg = Normal.fg, bg = Normal.bg, gui = "underdotted" }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
@@ -323,9 +323,9 @@ local theme = lush(function(injected_functions)
     -- NOTE: UNUSED
 
     -- Additional Plugin & LSP Groups from PLAN.md
-    -- TelescopeNormal { fg = Normal.fg, bg = Normal.bg },
-    -- TelescopeSelection { fg = Normal.fg, bg = Normal.bg },
-    -- TelescopeSelectionCaret { fg = Normal.fg, bg = Normal.bg },
+    TelescopeNormal { fg = Normal.fg, bg = Normal.bg },
+    TelescopeSelection { fg = Normal.bg, bg = Normal.fg },
+    TelescopeSelectionCaret { fg = Normal.bg, bg = Normal.fg },
     -- TelescopeMultiSelection { fg = Normal.fg, bg = Normal.bg },
     -- TelescopeMatching { fg = Normal.fg, bg = Normal.bg },
     -- TelescopeBorder { fg = Normal.fg, bg = Normal.bg },
@@ -398,8 +398,8 @@ local theme = lush(function(injected_functions)
     -- FlashBackdrop { fg = Normal.fg, bg = Normal.bg },
     -- FlashLabel { fg = Normal.fg, bg = Normal.bg },
     -- FlashMatch { fg = Normal.fg, bg = Normal.bg },
-    -- IblIndent { fg = Normal.fg, bg = Normal.bg },
-    -- IblScope { fg = Normal.fg, bg = Normal.bg },
+    IblIndent { fg = Normal.fg, bg = weak_gray },
+    IblScope { fg = Normal.fg, bg = weak_gray },
     -- IblWhitespace { fg = Normal.fg, bg = Normal.bg },
     -- NotifyERRORBorder { fg = Normal.fg, bg = Normal.bg },
     -- NotifyWARNBorder { fg = Normal.fg, bg = Normal.bg },
