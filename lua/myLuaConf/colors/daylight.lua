@@ -65,6 +65,8 @@ local theme = lush(function(injected_functions)
     -- SECTION: Unverified
     --          aka. "I haven't yet assigned these, or don't know what they're for yet"
     --
+
+-- SECTION: Main -------------------------------------------------------------------------
     ColorColumn { fg = Normal.fg, bg = Normal.bg }, -- Columns set with 'colorcolumn' -- highlighted 
     Conceal { fg = Normal.fg, bg = Normal.bg }, -- Placeholder characters substituted for concealed text (see 'conceallevel')
     Cursor { fg = Normal.fg, bg = Normal.bg }, -- Character under the cursor  -- TODO: this doesn't actually seem to set the cursor color. is that controlled by some other setting?
@@ -177,12 +179,17 @@ local theme = lush(function(injected_functions)
     Error { fg = Normal.fg, bg = Normal.bg }, -- Any erroneous construct
     Todo { fg = Normal.fg, bg = Normal.bg }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
+    -- END: Main -------------------------------------------------------------------------
+
+    -- SECTION: LSP ----------------------------------------------------------------------------
     -- These groups are for the native LSP client and diagnostic system. Some
     -- other LSP clients may use these groups, or use their own. Consult your
     -- LSP client's documentation.
 
     -- See :h lsp-highlight, some groups may not be listed, submit a PR fix to lush-template!
     --
+
+
     LspReferenceText { fg = Normal.fg, bg = Normal.bg }, -- Used for highlighting "text" references
     LspReferenceRead { fg = Normal.fg, bg = Normal.bg }, -- Used for highlighting "read" references
     LspReferenceWrite { fg = Normal.fg, bg = Normal.bg }, -- Used for highlighting "write" references
@@ -190,33 +197,53 @@ local theme = lush(function(injected_functions)
     LspCodeLensSeparator { fg = Normal.fg, bg = Normal.bg }, -- Used to color the seperator between two or more code lens.
     LspSignatureActiveParameter { fg = Normal.fg, bg = Normal.bg }, -- Used to highlight the active parameter in the signature help. See |vim.lsp.handlers.signature_help()|.
 
+
+
+    -- END: LSP ----------------------------------------------------------------------------
+
     -- See :h diagnostic-highlights, some groups may not be listed, submit a PR fix to lush-template!
-    --
-    DiagnosticError { fg = Normal.fg, bg = Normal.bg }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-    DiagnosticWarn { fg = Normal.fg, bg = Normal.bg }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+
+    -- SECTION: Diagnostics --------------------------------------------------------------------
+
+
+    DiagnosticError { fg = Normal.fg, bg = debug }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    DiagnosticWarn { fg = Normal.fg, bg = debug }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     DiagnosticInfo { fg = Normal.fg, bg = Normal.bg }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     DiagnosticHint { fg = Normal.fg, bg = Normal.bg }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     DiagnosticOk { fg = Normal.fg, bg = Normal.bg }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-    DiagnosticVirtualTextError { fg = Normal.fg, bg = Normal.bg }, -- Used for "Error" diagnostic virtual text.
-    DiagnosticVirtualTextWarn { fg = Normal.fg, bg = Normal.bg }, -- Used for "Warn" diagnostic virtual text.
-    DiagnosticVirtualTextInfo { fg = Normal.fg, bg = Normal.bg }, -- Used for "Info" diagnostic virtual text.
-    DiagnosticVirtualTextHint { fg = Normal.fg, bg = Normal.bg }, -- Used for "Hint" diagnostic virtual text.
-    DiagnosticVirtualTextOk { fg = Normal.fg, bg = Normal.bg }, -- Used for "Ok" diagnostic virtual text.
-    DiagnosticUnderlineError { fg = Normal.fg, bg = Normal.bg }, -- Used to underline "Error" diagnostics.
-    DiagnosticUnderlineWarn { fg = Normal.fg, bg = Normal.bg }, -- Used to underline "Warn" diagnostics.
-    DiagnosticUnderlineInfo { fg = Normal.fg, bg = Normal.bg }, -- Used to underline "Info" diagnostics.
-    DiagnosticUnderlineHint { fg = Normal.fg, bg = Normal.bg }, -- Used to underline "Hint" diagnostics.
-    DiagnosticUnderlineOk { fg = Normal.fg, bg = Normal.bg }, -- Used to underline "Ok" diagnostics.
-    DiagnosticFloatingError { fg = Normal.fg, bg = Normal.bg }, -- Used to color "Error" diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
-    DiagnosticFloatingWarn { fg = Normal.fg, bg = Normal.bg }, -- Used to color "Warn" diagnostic messages in diagnostics float.
-    DiagnosticFloatingInfo { fg = Normal.fg, bg = Normal.bg }, -- Used to color "Info" diagnostic messages in diagnostics float.
-    DiagnosticFloatingHint { fg = Normal.fg, bg = Normal.bg }, -- Used to color "Hint" diagnostic messages in diagnostics float.
-    DiagnosticFloatingOk { fg = Normal.fg, bg = Normal.bg }, -- Used to color "Ok" diagnostic messages in diagnostics float.
-    DiagnosticSignError { fg = Normal.fg, bg = Normal.bg }, -- Used for "Error" signs in sign column.
-    DiagnosticSignWarn { fg = Normal.fg, bg = Normal.bg }, -- Used for "Warn" signs in sign column.
-    DiagnosticSignInfo { fg = Normal.fg, bg = Normal.bg }, -- Used for "Info" signs in sign column.
-    DiagnosticSignHint { fg = Normal.fg, bg = Normal.bg }, -- Used for "Hint" signs in sign column.
-    DiagnosticSignOk { fg = Normal.fg, bg = Normal.bg }, -- Used for "Ok" signs in sign column.
+
+    -- INFO: Unused below:
+    -- WARNING: Some of these may be hallucinations.
+    -- DiagnosticVirtualTextError { fg = Normal.fg, bg = Normal.bg }, -- Used for "Error" diagnostic virtual text.
+    -- DiagnosticVirtualTextWarn { fg = Normal.fg, bg = Normal.bg }, -- Used for "Warn" diagnostic virtual text.
+    -- DiagnosticVirtualTextInfo { fg = Normal.fg, bg = Normal.bg }, -- Used for "Info" diagnostic virtual text.
+    -- DiagnosticVirtualTextHint { fg = Normal.fg, bg = Normal.bg }, -- Used for "Hint" diagnostic virtual text.
+    -- DiagnosticVirtualTextOk { fg = Normal.fg, bg = Normal.bg }, -- Used for "Ok" diagnostic virtual text.
+    -- DiagnosticUnderlineError { fg = Normal.fg, bg = Normal.bg }, -- Used to underline "Error" diagnostics.
+    -- DiagnosticUnderlineWarn { fg = Normal.fg, bg = Normal.bg }, -- Used to underline "Warn" diagnostics.
+    -- DiagnosticUnderlineInfo { fg = Normal.fg, bg = Normal.bg }, -- Used to underline "Info" diagnostics.
+    -- DiagnosticUnderlineHint { fg = Normal.fg, bg = Normal.bg }, -- Used to underline "Hint" diagnostics.
+    -- DiagnosticUnderlineOk { fg = Normal.fg, bg = Normal.bg }, -- Used to underline "Ok" diagnostics.
+    -- DiagnosticFloatingError { fg = Normal.fg, bg = Normal.bg }, -- Used to color "Error" diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
+    -- DiagnosticFloatingWarn { fg = Normal.fg, bg = Normal.bg }, -- Used to color "Warn" diagnostic messages in diagnostics float.
+    -- DiagnosticFloatingInfo { fg = Normal.fg, bg = Normal.bg }, -- Used to color "Info" diagnostic messages in diagnostics float.
+    -- DiagnosticFloatingHint { fg = Normal.fg, bg = Normal.bg }, -- Used to color "Hint" diagnostic messages in diagnostics float.
+    -- DiagnosticFloatingOk { fg = Normal.fg, bg = Normal.bg }, -- Used to color "Ok" diagnostic messages in diagnostics float.
+    -- DiagnosticSignError { fg = Normal.fg, bg = Normal.bg }, -- Used for "Error" signs in sign column.
+    -- DiagnosticSignWarn { fg = Normal.fg, bg = Normal.bg }, -- Used for "Warn" signs in sign column.
+    -- DiagnosticSignInfo { fg = Normal.fg, bg = Normal.bg }, -- Used for "Info" signs in sign column.
+    -- DiagnosticSignHint { fg = Normal.fg, bg = Normal.bg }, -- Used for "Hint" signs in sign column.
+    -- DiagnosticSignOk { fg = Normal.fg, bg = Normal.bg }, -- Used for "Ok" signs in sign column.
+
+
+-- END: Diagnostics
+
+
+
+
+
+
+
 
     -- Tree-Sitter syntax groups.
     --
