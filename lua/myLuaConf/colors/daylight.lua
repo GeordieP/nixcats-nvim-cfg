@@ -144,7 +144,7 @@ local theme = lush(function(injected_functions)
     -- Uncomment and edit if you want more specific syntax highlighting.
 
     Comment { fg = mid_gray, bg = Normal.bg, gui = 'italic' }, -- Any comment
-    SpecialComment { fg = Normal.fg, bg = Normal.bg }, --   Special things inside a comment (e.g. '\n')
+    SpecialComment { fg = Comment.fg, bg = Comment.bg, gui = Comment.gui }, --   Special things inside a comment (e.g. '\n')
 
     Constant { fg = Normal.fg, bg = Normal.bg }, -- (*) Any constant
     String { fg = Normal.fg, bg = Normal.bg }, --   A string constant: "this is a string"
@@ -218,30 +218,31 @@ local theme = lush(function(injected_functions)
 
     -- INFO: Some unused below:
     -- WARNING: Some of these may be hallucinations.
+    -- SECTION: ERROR
     DiagnosticVirtualTextError { fg = DiagnosticError.fg, bg = DiagnosticError.bg, gui = DiagnosticError.gui }, -- Used for "Error" diagnostic virtual text.
     DiagnosticUnderlineError { fg = DiagnosticError.fg, bg = DiagnosticError.bg, gui = DiagnosticError.gui }, -- Used for underlined "Error" diagnostics.
     DiagnosticFloatingError { fg = DiagnosticError.fg, bg = DiagnosticError.bg, gui = DiagnosticError.gui }, -- Used to color "Error" diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
     DiagnosticSignError { fg = DiagnosticError.fg, bg = DiagnosticError.bg, gui = DiagnosticError.gui }, -- Used for "Error" signs in sign column.
-    -- WARN:
+    -- SECTION: WARN
     DiagnosticVirtualTextWarn { fg = DiagnosticWarn.fg, bg = DiagnosticWarn.bg, gui = DiagnosticWarn.gui }, -- Used for "Warn" diagnostic virtual text.
     DiagnosticUnderlineWarn { fg = DiagnosticWarn.fg, bg = DiagnosticWarn.bg, gui = DiagnosticWarn.gui }, -- Used to underline "Warn" diagnostics.
     DiagnosticFloatingWarn { fg = DiagnosticWarn.fg, bg = DiagnosticWarn.bg, gui = DiagnosticWarn.gui }, -- Used to color "Warn" diagnostic messages in diagnostics float.
     DiagnosticSignWarn { fg = DiagnosticWarn.fg, bg = DiagnosticWarn.bg, gui = DiagnosticWarn.gui }, -- Used for "Warn" signs in sign column.
-    -- INFO:
+    -- SECTION: INFO
     DiagnosticVirtualTextInfo { fg = DiagnosticInfo.fg, bg = DiagnosticInfo.bg, gui = DiagnosticInfo.gui }, -- Used for "Info" diagnostic virtual text.
     DiagnosticUnderlineInfo { fg = DiagnosticInfo.fg, bg = DiagnosticInfo.bg, gui = DiagnosticInfo.gui }, -- Used to underline "Info" diagnostics.
     DiagnosticFloatingInfo { fg = DiagnosticInfo.fg, bg = DiagnosticInfo.bg, gui = DiagnosticInfo.gui }, -- Used to color "Info" diagnostic messages in diagnostics float.
     DiagnosticSignInfo { fg = DiagnosticInfo.fg, bg = DiagnosticInfo.bg, gui = DiagnosticInfo.gui }, -- Used for "Info" signs in sign column.
-    -- HINT:
+    -- SECTION: HINT
     DiagnosticVirtualTextHint { fg = DiagnosticHint.fg, bg = DiagnosticHint.bg, gui = DiagnosticHint.gui }, -- Used for "Hint" diagnostic virtual text.
-    DiagnosticUnderlineHint { fg = Normal.fg, bg = Normal.bg }, -- Used to underline "Hint" diagnostics.
-    DiagnosticFloatingHint { fg = Normal.fg, bg = Normal.bg }, -- Used to color "Hint" diagnostic messages in diagnostics float.
-    DiagnosticSignHint { fg = Normal.fg, bg = Normal.bg }, -- Used for "Hint" signs in sign column.
-    -- OK:
-    DiagnosticVirtualTextOk { fg = Normal.fg, bg = Normal.bg }, -- Used for "Ok" diagnostic virtual text.
-    DiagnosticUnderlineOk { fg = Normal.fg, bg = Normal.bg }, -- Used to underline "Ok" diagnostics.
-    DiagnosticFloatingOk { fg = Normal.fg, bg = Normal.bg }, -- Used to color "Ok" diagnostic messages in diagnostics float.
-    DiagnosticSignOk { fg = Normal.fg, bg = Normal.bg }, -- Used for "Ok" signs in sign column.
+    DiagnosticUnderlineHint { fg = DiagnosticHint.fg, bg = DiagnosticHint.bg, gui = DiagnosticHint.gui }, -- Used to underline "Hint" diagnostics.
+    DiagnosticFloatingHint { fg = DiagnosticHint.fg, bg = DiagnosticHint.bg, gui = DiagnosticHint.gui }, -- Used to color "Hint" diagnostic messages in diagnostics float.
+    DiagnosticSignHint { fg = DiagnosticHint.fg, bg = DiagnosticHint.bg, gui = DiagnosticHint.gui }, -- Used for "Hint" signs in sign column.
+    -- SECTION: OK
+    DiagnosticVirtualTextOk { fg = DiagnosticOk.fg, bg = DiagnosticOk.bg, gui = DiagnosticOk.gui }, -- Used for "Ok" diagnostic virtual text.
+    DiagnosticUnderlineOk { fg = DiagnosticOk.fg, bg = DiagnosticOk.bg, gui = DiagnosticOk.gui }, -- Used to underline "Ok" diagnostics.
+    DiagnosticFloatingOk { fg = DiagnosticOk.fg, bg = DiagnosticOk.bg, gui = DiagnosticOk.gui }, -- Used to color "Ok" diagnostic messages in diagnostics float.
+    DiagnosticSignOk { fg = DiagnosticOk.fg, bg = DiagnosticOk.bg, gui = DiagnosticOk.gui }, -- Used for "Ok" signs in sign column.
 
 -- END: Diagnostics
 
@@ -267,8 +268,11 @@ local theme = lush(function(injected_functions)
     --
     -- For more information see https://github.com/rktjmp/lush.nvim/issues/109
 
+
     sym"@text.literal" { fg = Normal.fg, bg = Comment.bg, gui = Comment.gui }, -- Comment
     sym"@comment" { fg = Normal.fg, bg = Comment.bg }, -- Comment
+    sym"@lsp.type.comment" { fg = Comment.fg, bg = Comment.bg, gui = Comment.gui },
+    sym"@lsp.type.decorator" { fg = Normal.fg, bg = Normal.bg, gui = Comment.gui },
     -- sym"@text.reference" { fg = Normal.fg, bg = Normal.bg, gui = Underlined.gui }, -- Identifier
     -- sym"@text.title" { fg = Normal.fg, bg = Normal.bg }, -- Title
     -- sym"@text.uri" { fg = Normal.fg, bg = Normal.bg }, -- Underlined
@@ -378,7 +382,19 @@ local theme = lush(function(injected_functions)
 
     -- SECTION: Misc
     -- NOTE: UNUSED
-
+    -- sym"@lsp.type.class" { fg = Normal.fg, bg = Normal.bg },
+    -- sym"@lsp.type.enum" { fg = Normal.fg, bg = Normal.bg },
+    -- sym"@lsp.type.enumMember" { fg = Normal.fg, bg = Normal.bg },
+    -- sym"@lsp.type.function" { fg = Normal.fg, bg = Normal.bg },
+    -- sym"@lsp.type.interface" { fg = Normal.fg, bg = Normal.bg },
+    -- sym"@lsp.type.keyword" { fg = Normal.fg, bg = Normal.bg },
+    -- sym"@lsp.type.namespace" { fg = Normal.fg, bg = Normal.bg },
+    -- sym"@lsp.type.parameter" { fg = Normal.fg, bg = Normal.bg },
+    -- sym"@lsp.type.property" { fg = Normal.fg, bg = Normal.bg },
+    -- sym"@lsp.type.struct" { fg = Normal.fg, bg = Normal.bg },
+    -- sym"@lsp.type.type" { fg = Normal.fg, bg = Normal.bg },
+    -- sym"@lsp.type.typeParameter" { fg = Normal.fg, bg = Normal.bg },
+    -- sym"@lsp.type.variable" { fg = Normal.fg, bg = Normal.bg },
     -- FlashBackdrop { fg = Normal.fg, bg = Normal.bg },
     -- FlashLabel { fg = Normal.fg, bg = Normal.bg },
     -- FlashMatch { fg = Normal.fg, bg = Normal.bg },
@@ -395,21 +411,6 @@ local theme = lush(function(injected_functions)
     -- NotifyINFOBody { fg = Normal.fg, bg = Normal.bg },
     -- NotifyDEBUGBody { fg = Normal.fg, bg = Normal.bg },
     -- NotifyTRACEBody { fg = Normal.fg, bg = Normal.bg },
-    -- sym"@lsp.type.class" { fg = Normal.fg, bg = Normal.bg },
-    -- sym"@lsp.type.comment" { fg = Comment.fg, bg = Comment.bg, gui = Comment.gui },
-    -- sym"@lsp.type.decorator" { fg = Normal.fg, bg = Normal.bg, gui = Comment.gui },
-    -- sym"@lsp.type.enum" { fg = Normal.fg, bg = Normal.bg },
-    -- sym"@lsp.type.enumMember" { fg = Normal.fg, bg = Normal.bg },
-    -- sym"@lsp.type.function" { fg = Normal.fg, bg = Normal.bg },
-    -- sym"@lsp.type.interface" { fg = Normal.fg, bg = Normal.bg },
-    -- sym"@lsp.type.keyword" { fg = Normal.fg, bg = Normal.bg },
-    -- sym"@lsp.type.namespace" { fg = Normal.fg, bg = Normal.bg },
-    -- sym"@lsp.type.parameter" { fg = Normal.fg, bg = Normal.bg },
-    -- sym"@lsp.type.property" { fg = Normal.fg, bg = Normal.bg },
-    -- sym"@lsp.type.struct" { fg = Normal.fg, bg = Normal.bg },
-    -- sym"@lsp.type.type" { fg = Normal.fg, bg = Normal.bg },
-    -- sym"@lsp.type.typeParameter" { fg = Normal.fg, bg = Normal.bg },
-    -- sym"@lsp.type.variable" { fg = Normal.fg, bg = Normal.bg },
 
     -- END: Misc
 }
