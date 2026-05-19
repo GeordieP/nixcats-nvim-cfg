@@ -43,7 +43,7 @@
 -- MARK:       swift-style mark comments 
 -- SECTION:    for denoting sections of code
 -- END:        for denoting the end of sections
--- HISTORY:    file history markers 
+-- HISTORY:    file history markers
 
 return {
   {

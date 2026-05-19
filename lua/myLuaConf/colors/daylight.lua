@@ -21,6 +21,10 @@ local debug = hsl(300, 100, 50)
 
 
 -- TODO:
+-- @ WIP:
+-- @ Make comments italics
+--
+-- o NEXT:
 -- o Extra config for autocomplete window
 --     o Currently selected line should be black bg, white fg (in light mode)
 --     o Black border around the autocomplete pop-up
@@ -28,7 +32,7 @@ local debug = hsl(300, 100, 50)
 -- o Support colors for embedded lazygit
 -- o Extra config for telescope
 --     o Currently selected line should be black bg, white fg (in light mode)
--- @ Make comments italics
+-- o Make indent guides weak_gray
 
 
 
@@ -187,7 +191,6 @@ local theme = lush(function(injected_functions)
     -- LSP client's documentation.
 
     -- See :h lsp-highlight, some groups may not be listed, submit a PR fix to lush-template!
-    --
 
 
     LspReferenceText { fg = Normal.fg, bg = Normal.bg }, -- Used for highlighting "text" references
@@ -197,14 +200,12 @@ local theme = lush(function(injected_functions)
     LspCodeLensSeparator { fg = Normal.fg, bg = Normal.bg }, -- Used to color the seperator between two or more code lens.
     LspSignatureActiveParameter { fg = Normal.fg, bg = Normal.bg }, -- Used to highlight the active parameter in the signature help. See |vim.lsp.handlers.signature_help()|.
 
-
-
     -- END: LSP ----------------------------------------------------------------------------
 
-    -- See :h diagnostic-highlights, some groups may not be listed, submit a PR fix to lush-template!
 
     -- SECTION: Diagnostics --------------------------------------------------------------------
 
+    -- See :h diagnostic-highlights, some groups may not be listed, submit a PR fix to lush-template!
 
     DiagnosticError { fg = Normal.fg, bg = debug }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     DiagnosticWarn { fg = Normal.fg, bg = debug }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
@@ -235,7 +236,6 @@ local theme = lush(function(injected_functions)
     -- DiagnosticSignHint { fg = Normal.fg, bg = Normal.bg }, -- Used for "Hint" signs in sign column.
     -- DiagnosticSignOk { fg = Normal.fg, bg = Normal.bg }, -- Used for "Ok" signs in sign column.
 
-
 -- END: Diagnostics
 
 
@@ -244,6 +244,7 @@ local theme = lush(function(injected_functions)
 
 
 
+-- SECTION: Tree-Sitter
 
     -- Tree-Sitter syntax groups.
     --
@@ -262,80 +263,103 @@ local theme = lush(function(injected_functions)
     --
     -- For more information see https://github.com/rktjmp/lush.nvim/issues/109
 
-    sym"@text.literal" { fg = Normal.fg, bg = Comment.bg }, -- Comment
+    sym"@text.literal" { fg = Normal.fg, bg = Comment.bg, gui = Comment.gui }, -- Comment
     sym"@comment" { fg = Normal.fg, bg = Comment.bg }, -- Comment
-    sym"@text.reference" { fg = Normal.fg, bg = Normal.bg, gui = Underlined.gui }, -- Identifier
-    sym"@text.title" { fg = Normal.fg, bg = Normal.bg }, -- Title
-    sym"@text.uri" { fg = Normal.fg, bg = Normal.bg }, -- Underlined
-    sym"@text.underline" { fg = Normal.fg, bg = Normal.bg }, -- Underlined
-    sym"@text.todo" { fg = Normal.fg, bg = Normal.bg }, -- Todo
-    sym"@punctuation" { fg = Normal.fg, bg = Normal.bg }, -- Delimiter
-    sym"@constant" { fg = Normal.fg, bg = Normal.bg }, -- Constant
-    sym"@constant.builtin" { fg = Normal.fg, bg = Normal.bg }, -- Special
-    sym"@constant.macro" { fg = Normal.fg, bg = Normal.bg }, -- Define
-    sym"@define" { fg = Normal.fg, bg = Normal.bg }, -- Define
-    sym"@macro" { fg = Normal.fg, bg = Normal.bg }, -- Macro
-    sym"@string" { fg = Normal.fg, bg = Normal.bg }, -- String
-    sym"@string.escape" { fg = Normal.fg, bg = Normal.bg }, -- SpecialChar
-    sym"@string.special" { fg = Normal.fg, bg = Normal.bg }, -- SpecialChar
-    sym"@character" { fg = Normal.fg, bg = Normal.bg }, -- Character
-    sym"@character.special" { fg = Normal.fg, bg = Normal.bg }, -- SpecialChar
-    sym"@number" { fg = Normal.fg, bg = Normal.bg }, -- Number
-    sym"@boolean" { fg = Normal.fg, bg = Normal.bg }, -- Boolean
-    sym"@float" { fg = Normal.fg, bg = Normal.bg }, -- Float
-    sym"@function" { fg = Normal.fg, bg = Normal.bg }, -- Function
-    sym"@function.builtin" { fg = Normal.fg, bg = Normal.bg }, -- Special
-    sym"@function.macro" { fg = Normal.fg, bg = Normal.bg }, -- Macro
-    sym"@parameter" { fg = Normal.fg, bg = Normal.bg }, -- Identifier
-    sym"@method" { fg = Normal.fg, bg = Normal.bg }, -- Function
-    sym"@field" { fg = Normal.fg, bg = Normal.bg }, -- Identifier
-    sym"@property" { fg = Normal.fg, bg = Normal.bg }, -- Identifier
-    sym"@constructor" { fg = Normal.fg, bg = Normal.bg }, -- Special
-    sym"@conditional" { fg = Normal.fg, bg = Normal.bg }, -- Conditional
-    sym"@repeat" { fg = Normal.fg, bg = Normal.bg }, -- Repeat
-    sym"@label" { fg = Normal.fg, bg = Normal.bg }, -- Label
-    sym"@operator" { fg = Normal.fg, bg = Normal.bg }, -- Operator
-    sym"@keyword" { fg = Normal.fg, bg = Normal.bg }, -- Keyword
-    sym"@exception" { fg = Normal.fg, bg = Normal.bg }, -- Exception
-    sym"@variable" { fg = Normal.fg, bg = Normal.bg }, -- Identifier
-    sym"@type" { fg = Normal.fg, bg = Normal.bg }, -- Type
-    sym"@type.definition" { fg = Normal.fg, bg = Normal.bg }, -- Typedef
-    sym"@storageclass" { fg = Normal.fg, bg = Normal.bg }, -- StorageClass
-    sym"@structure" { fg = Normal.fg, bg = Normal.bg }, -- Structure
-    sym"@namespace" { fg = Normal.fg, bg = Normal.bg }, -- Identifier
-    sym"@include" { fg = Normal.fg, bg = Normal.bg }, -- Include
-    sym"@preproc" { fg = Normal.fg, bg = Normal.bg }, -- PreProc
-    sym"@debug" { fg = Normal.fg, bg = Normal.bg }, -- Debug
-    sym"@tag" { fg = Normal.fg, bg = Normal.bg }, -- Tag
+    -- sym"@text.reference" { fg = Normal.fg, bg = Normal.bg, gui = Underlined.gui }, -- Identifier
+    -- sym"@text.title" { fg = Normal.fg, bg = Normal.bg }, -- Title
+    -- sym"@text.uri" { fg = Normal.fg, bg = Normal.bg }, -- Underlined
+    -- sym"@text.underline" { fg = Normal.fg, bg = Normal.bg }, -- Underlined
+    -- sym"@text.todo" { fg = Normal.fg, bg = Normal.bg }, -- Todo
+    -- sym"@punctuation" { fg = Normal.fg, bg = Normal.bg }, -- Delimiter
+    -- sym"@constant" { fg = Normal.fg, bg = Normal.bg }, -- Constant
+    -- sym"@constant.builtin" { fg = Normal.fg, bg = Normal.bg }, -- Special
+    -- sym"@constant.macro" { fg = Normal.fg, bg = Normal.bg }, -- Define
+    -- sym"@define" { fg = Normal.fg, bg = Normal.bg }, -- Define
+    -- sym"@macro" { fg = Normal.fg, bg = Normal.bg }, -- Macro
+    -- sym"@string" { fg = Normal.fg, bg = Normal.bg }, -- String
+    -- sym"@string.escape" { fg = Normal.fg, bg = Normal.bg }, -- SpecialChar
+    -- sym"@string.special" { fg = Normal.fg, bg = Normal.bg }, -- SpecialChar
+    -- sym"@character" { fg = Normal.fg, bg = Normal.bg }, -- Character
+    -- sym"@character.special" { fg = Normal.fg, bg = Normal.bg }, -- SpecialChar
+    -- sym"@number" { fg = Normal.fg, bg = Normal.bg }, -- Number
+    -- sym"@boolean" { fg = Normal.fg, bg = Normal.bg }, -- Boolean
+    -- sym"@float" { fg = Normal.fg, bg = Normal.bg }, -- Float
+    -- sym"@function" { fg = Normal.fg, bg = Normal.bg }, -- Function
+    -- sym"@function.builtin" { fg = Normal.fg, bg = Normal.bg }, -- Special
+    -- sym"@function.macro" { fg = Normal.fg, bg = Normal.bg }, -- Macro
+    -- sym"@parameter" { fg = Normal.fg, bg = Normal.bg }, -- Identifier
+    -- sym"@method" { fg = Normal.fg, bg = Normal.bg }, -- Function
+    -- sym"@field" { fg = Normal.fg, bg = Normal.bg }, -- Identifier
+    -- sym"@property" { fg = Normal.fg, bg = Normal.bg }, -- Identifier
+    -- sym"@constructor" { fg = Normal.fg, bg = Normal.bg }, -- Special
+    -- sym"@conditional" { fg = Normal.fg, bg = Normal.bg }, -- Conditional
+    -- sym"@repeat" { fg = Normal.fg, bg = Normal.bg }, -- Repeat
+    -- sym"@label" { fg = Normal.fg, bg = Normal.bg }, -- Label
+    -- sym"@operator" { fg = Normal.fg, bg = Normal.bg }, -- Operator
+    -- sym"@keyword" { fg = Normal.fg, bg = Normal.bg }, -- Keyword
+    -- sym"@exception" { fg = Normal.fg, bg = Normal.bg }, -- Exception
+    -- sym"@variable" { fg = Normal.fg, bg = Normal.bg }, -- Identifier
+    -- sym"@type" { fg = Normal.fg, bg = Normal.bg }, -- Type
+    -- sym"@type.definition" { fg = Normal.fg, bg = Normal.bg }, -- Typedef
+    -- sym"@storageclass" { fg = Normal.fg, bg = Normal.bg }, -- StorageClass
+    -- sym"@structure" { fg = Normal.fg, bg = Normal.bg }, -- Structure
+    -- sym"@namespace" { fg = Normal.fg, bg = Normal.bg }, -- Identifier
+    -- sym"@include" { fg = Normal.fg, bg = Normal.bg }, -- Include
+    -- sym"@preproc" { fg = Normal.fg, bg = Normal.bg }, -- PreProc
+    -- sym"@debug" { fg = Normal.fg, bg = Normal.bg }, -- Debug
+    -- sym"@tag" { fg = Normal.fg, bg = Normal.bg }, -- Tag
+
+    -- END: Tree-Sitter
+
+    -- SECTION: Telescope
+    -- NOTE: UNUSED
 
     -- Additional Plugin & LSP Groups from PLAN.md
-    TelescopeNormal { fg = Normal.fg, bg = Normal.bg },
-    TelescopeSelection { fg = Normal.fg, bg = Normal.bg },
-    TelescopeSelectionCaret { fg = Normal.fg, bg = Normal.bg },
-    TelescopeMultiSelection { fg = Normal.fg, bg = Normal.bg },
-    TelescopeMatching { fg = Normal.fg, bg = Normal.bg },
-    TelescopeBorder { fg = Normal.fg, bg = Normal.bg },
-    TelescopePromptBorder { fg = Normal.fg, bg = Normal.bg },
-    TelescopePromptNormal { fg = Normal.fg, bg = Normal.bg },
-    TelescopePromptTitle { fg = Normal.fg, bg = Normal.bg },
-    TelescopePreviewTitle { fg = Normal.fg, bg = Normal.bg },
-    TelescopeResultsTitle { fg = Normal.fg, bg = Normal.bg },
-    TelescopeResultsNormal { fg = Normal.fg, bg = Normal.bg },
-    WhichKey { fg = Normal.fg, bg = Normal.bg },
-    WhichKeyGroup { fg = Normal.fg, bg = Normal.bg },
-    WhichKeySeparator { fg = Normal.fg, bg = Normal.bg },
-    WhichKeyDesc { fg = Normal.fg, bg = Normal.bg },
-    WhichKeyFloat { fg = Normal.fg, bg = Normal.bg },
-    WhichKeyBorder { fg = Normal.fg, bg = Normal.bg },
-    WhichKeyTitle { fg = Normal.fg, bg = Normal.bg },
-    TroubleText { fg = Normal.fg, bg = Normal.bg },
-    TroubleCount { fg = Normal.fg, bg = Normal.bg },
-    TroubleNormal { fg = Normal.fg, bg = Normal.bg },
-    TroubleIndent { fg = Normal.fg, bg = Normal.bg },
-    TroubleIndentWrap { fg = Normal.fg, bg = Normal.bg },
-    TroubleLocation { fg = Normal.fg, bg = Normal.bg },
-    TroublePreview { fg = Normal.fg, bg = Normal.bg },
-    TroubleSign { fg = Normal.fg, bg = Normal.bg },
+    -- TelescopeNormal { fg = Normal.fg, bg = Normal.bg },
+    -- TelescopeSelection { fg = Normal.fg, bg = Normal.bg },
+    -- TelescopeSelectionCaret { fg = Normal.fg, bg = Normal.bg },
+    -- TelescopeMultiSelection { fg = Normal.fg, bg = Normal.bg },
+    -- TelescopeMatching { fg = Normal.fg, bg = Normal.bg },
+    -- TelescopeBorder { fg = Normal.fg, bg = Normal.bg },
+    -- TelescopePromptBorder { fg = Normal.fg, bg = Normal.bg },
+    -- TelescopePromptNormal { fg = Normal.fg, bg = Normal.bg },
+    -- TelescopePromptTitle { fg = Normal.fg, bg = Normal.bg },
+    -- TelescopePreviewTitle { fg = Normal.fg, bg = Normal.bg },
+    -- TelescopeResultsTitle { fg = Normal.fg, bg = Normal.bg },
+    -- TelescopeResultsNormal { fg = Normal.fg, bg = Normal.bg },
+
+    -- END: Telescope
+
+    -- SECTION: Which-Key
+    -- NOTE: UNUSED
+
+    -- WhichKey { fg = Normal.fg, bg = Normal.bg },
+    -- WhichKeyGroup { fg = Normal.fg, bg = Normal.bg },
+    -- WhichKeySeparator { fg = Normal.fg, bg = Normal.bg },
+    -- WhichKeyDesc { fg = Normal.fg, bg = Normal.bg },
+    -- WhichKeyFloat { fg = Normal.fg, bg = Normal.bg },
+    -- WhichKeyBorder { fg = Normal.fg, bg = Normal.bg },
+    -- WhichKeyTitle { fg = Normal.fg, bg = Normal.bg },
+
+    -- END: Which-Key
+
+    -- SECTION: Which-Key
+    -- NOTE: UNUSED
+
+    -- TroubleText { fg = Normal.fg, bg = Normal.bg },
+    -- TroubleCount { fg = Normal.fg, bg = Normal.bg },
+    -- TroubleNormal { fg = Normal.fg, bg = Normal.bg },
+    -- TroubleIndent { fg = Normal.fg, bg = Normal.bg },
+    -- TroubleIndentWrap { fg = Normal.fg, bg = Normal.bg },
+    -- TroubleLocation { fg = Normal.fg, bg = Normal.bg },
+    -- TroublePreview { fg = Normal.fg, bg = Normal.bg },
+    -- TroubleSign { fg = Normal.fg, bg = Normal.bg },
+
+    -- END: Which-Key
+
+    -- SECTION: GitSigns
+    -- NOTE: UNUSED
+
     GitSignsAdd { fg = Normal.fg, bg = Normal.bg },
     GitSignsChange { fg = Normal.fg, bg = Normal.bg },
     GitSignsDelete { fg = Normal.fg, bg = Normal.bg },
@@ -345,6 +369,12 @@ local theme = lush(function(injected_functions)
     GitSignsAddNr { fg = Normal.fg, bg = Normal.bg },
     GitSignsChangeNr { fg = Normal.fg, bg = Normal.bg },
     GitSignsDeleteNr { fg = Normal.fg, bg = Normal.bg },
+
+    -- END: GitSigns
+
+    -- SECTION: Misc
+    -- NOTE: UNUSED
+
     FlashBackdrop { fg = Normal.fg, bg = Normal.bg },
     FlashLabel { fg = Normal.fg, bg = Normal.bg },
     FlashMatch { fg = Normal.fg, bg = Normal.bg },
@@ -376,6 +406,8 @@ local theme = lush(function(injected_functions)
     sym"@lsp.type.type" { fg = Normal.fg, bg = Normal.bg },
     sym"@lsp.type.typeParameter" { fg = Normal.fg, bg = Normal.bg },
     sym"@lsp.type.variable" { fg = Normal.fg, bg = Normal.bg },
+
+    -- END: Misc
 }
 end)
 
