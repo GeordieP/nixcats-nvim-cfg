@@ -14,17 +14,20 @@ local white = hsl(255, 255, 255)
 local strong_gray = white.darken(60).desaturate(100)
 local mid_gray = white.darken(45).desaturate(100)
 local weak_gray = white.darken(25).desaturate(100)
-local debug = hsl(300, 100, 50)
-
-
+local debug  = hsl(300, 100, 50)
+local debug2 = hsl(272, 91, 75)
+local debug3 = hsl(192, 100, 39)
+local debug4 = hsl(91, 81, 73)
 
 
 
 -- TODO:
 -- @ WIP:
 -- @ Make comments italics
+-- 
 --
 -- o NEXT:
+-- o replace fg=white,bg=black with gui=reverse?
 -- o Extra config for autocomplete window
 --     o Currently selected line should be black bg, white fg (in light mode)
 --     o Black border around the autocomplete pop-up
@@ -33,12 +36,12 @@ local debug = hsl(300, 100, 50)
 -- o Extra config for telescope
 --     o Currently selected line should be black bg, white fg (in light mode)
 -- o Make indent guides weak_gray
-
+-- o Review `unused` sections below
 
 
 -- LSP/Linters mistakenly show `undefined global` errors in the spec, they may
 -- support an annotation like the following. Consult your server documentation.
----@diagnostic disable: undefined-global
+-- @diagnostic disable: undefined-global
 local theme = lush(function(injected_functions)
   local sym = injected_functions.sym
   return {
@@ -78,7 +81,7 @@ local theme = lush(function(injected_functions)
     CursorIM { fg = Normal.fg, bg = Normal.bg }, -- Like Cursor, but used when in IME mode |CursorIM|
     CursorColumn { fg = Normal.fg, bg = Normal.bg }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
     CursorLine { fg = Normal.fg, bg = Normal.bg }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
-    Directory { fg = Normal.fg, bg = debug }, -- Directory names (and other special names in listings)
+    Directory { fg = Normal.fg, bg = weak_gray }, -- Directory names (and other special names in listings)
     DiffAdd { fg = Normal.fg, bg = Normal.bg }, -- Diff mode: Added line |diff.txt|
     DiffChange { fg = Normal.fg, bg = Normal.bg }, -- Diff mode: Changed line |diff.txt|
     DiffDelete { fg = Normal.fg, bg = Normal.bg }, -- Diff mode: Deleted line |diff.txt|
@@ -207,39 +210,40 @@ local theme = lush(function(injected_functions)
 
     -- See :h diagnostic-highlights, some groups may not be listed, submit a PR fix to lush-template!
 
-    DiagnosticError { fg = Normal.fg, bg = debug }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-    DiagnosticWarn { fg = Normal.fg, bg = debug }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-    DiagnosticInfo { fg = Normal.fg, bg = Normal.bg }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-    DiagnosticHint { fg = Normal.fg, bg = Normal.bg }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-    DiagnosticOk { fg = Normal.fg, bg = Normal.bg }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    DiagnosticError { fg = Normal.bg, bg = Normal.fg, gui = "strikethrough"  }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    DiagnosticWarn { fg = Normal.fg, bg = Normal.bg, gui = "underdotted" }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    DiagnosticInfo { fg = Normal.fg, bg = Normal.bg, gui = "underdotted" }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    DiagnosticHint { fg = Normal.fg, bg = Normal.bg, gui = "underdotted" }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    DiagnosticOk { fg = Normal.fg, bg = Normal.bg, gui = "underdotted" }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
 
-    -- INFO: Unused below:
+    -- INFO: Some unused below:
     -- WARNING: Some of these may be hallucinations.
-    -- DiagnosticVirtualTextError { fg = Normal.fg, bg = Normal.bg }, -- Used for "Error" diagnostic virtual text.
-    -- DiagnosticVirtualTextWarn { fg = Normal.fg, bg = Normal.bg }, -- Used for "Warn" diagnostic virtual text.
-    -- DiagnosticVirtualTextInfo { fg = Normal.fg, bg = Normal.bg }, -- Used for "Info" diagnostic virtual text.
-    -- DiagnosticVirtualTextHint { fg = Normal.fg, bg = Normal.bg }, -- Used for "Hint" diagnostic virtual text.
-    -- DiagnosticVirtualTextOk { fg = Normal.fg, bg = Normal.bg }, -- Used for "Ok" diagnostic virtual text.
-    -- DiagnosticUnderlineError { fg = Normal.fg, bg = Normal.bg }, -- Used to underline "Error" diagnostics.
-    -- DiagnosticUnderlineWarn { fg = Normal.fg, bg = Normal.bg }, -- Used to underline "Warn" diagnostics.
-    -- DiagnosticUnderlineInfo { fg = Normal.fg, bg = Normal.bg }, -- Used to underline "Info" diagnostics.
-    -- DiagnosticUnderlineHint { fg = Normal.fg, bg = Normal.bg }, -- Used to underline "Hint" diagnostics.
-    -- DiagnosticUnderlineOk { fg = Normal.fg, bg = Normal.bg }, -- Used to underline "Ok" diagnostics.
-    -- DiagnosticFloatingError { fg = Normal.fg, bg = Normal.bg }, -- Used to color "Error" diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
-    -- DiagnosticFloatingWarn { fg = Normal.fg, bg = Normal.bg }, -- Used to color "Warn" diagnostic messages in diagnostics float.
-    -- DiagnosticFloatingInfo { fg = Normal.fg, bg = Normal.bg }, -- Used to color "Info" diagnostic messages in diagnostics float.
-    -- DiagnosticFloatingHint { fg = Normal.fg, bg = Normal.bg }, -- Used to color "Hint" diagnostic messages in diagnostics float.
-    -- DiagnosticFloatingOk { fg = Normal.fg, bg = Normal.bg }, -- Used to color "Ok" diagnostic messages in diagnostics float.
-    -- DiagnosticSignError { fg = Normal.fg, bg = Normal.bg }, -- Used for "Error" signs in sign column.
-    -- DiagnosticSignWarn { fg = Normal.fg, bg = Normal.bg }, -- Used for "Warn" signs in sign column.
-    -- DiagnosticSignInfo { fg = Normal.fg, bg = Normal.bg }, -- Used for "Info" signs in sign column.
-    -- DiagnosticSignHint { fg = Normal.fg, bg = Normal.bg }, -- Used for "Hint" signs in sign column.
-    -- DiagnosticSignOk { fg = Normal.fg, bg = Normal.bg }, -- Used for "Ok" signs in sign column.
+    DiagnosticVirtualTextError { fg = DiagnosticError.fg, bg = DiagnosticError.bg, gui = DiagnosticError.gui }, -- Used for "Error" diagnostic virtual text.
+    DiagnosticUnderlineError { fg = DiagnosticError.fg, bg = DiagnosticError.bg, gui = DiagnosticError.gui }, -- Used for underlined "Error" diagnostics.
+    DiagnosticFloatingError { fg = DiagnosticError.fg, bg = DiagnosticError.bg, gui = DiagnosticError.gui }, -- Used to color "Error" diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
+    DiagnosticSignError { fg = DiagnosticError.fg, bg = DiagnosticError.bg, gui = DiagnosticError.gui }, -- Used for "Error" signs in sign column.
+    -- WARN:
+    DiagnosticVirtualTextWarn { fg = DiagnosticWarn.fg, bg = DiagnosticWarn.bg, gui = DiagnosticWarn.gui }, -- Used for "Warn" diagnostic virtual text.
+    DiagnosticUnderlineWarn { fg = DiagnosticWarn.fg, bg = DiagnosticWarn.bg, gui = DiagnosticWarn.gui }, -- Used to underline "Warn" diagnostics.
+    DiagnosticFloatingWarn { fg = DiagnosticWarn.fg, bg = DiagnosticWarn.bg, gui = DiagnosticWarn.gui }, -- Used to color "Warn" diagnostic messages in diagnostics float.
+    DiagnosticSignWarn { fg = DiagnosticWarn.fg, bg = DiagnosticWarn.bg, gui = DiagnosticWarn.gui }, -- Used for "Warn" signs in sign column.
+    -- INFO:
+    DiagnosticVirtualTextInfo { fg = DiagnosticInfo.fg, bg = DiagnosticInfo.bg, gui = DiagnosticInfo.gui }, -- Used for "Info" diagnostic virtual text.
+    DiagnosticUnderlineInfo { fg = DiagnosticInfo.fg, bg = DiagnosticInfo.bg, gui = DiagnosticInfo.gui }, -- Used to underline "Info" diagnostics.
+    DiagnosticFloatingInfo { fg = DiagnosticInfo.fg, bg = DiagnosticInfo.bg, gui = DiagnosticInfo.gui }, -- Used to color "Info" diagnostic messages in diagnostics float.
+    DiagnosticSignInfo { fg = DiagnosticInfo.fg, bg = DiagnosticInfo.bg, gui = DiagnosticInfo.gui }, -- Used for "Info" signs in sign column.
+    -- HINT:
+    DiagnosticVirtualTextHint { fg = DiagnosticHint.fg, bg = DiagnosticHint.bg, gui = DiagnosticHint.gui }, -- Used for "Hint" diagnostic virtual text.
+    DiagnosticUnderlineHint { fg = Normal.fg, bg = Normal.bg }, -- Used to underline "Hint" diagnostics.
+    DiagnosticFloatingHint { fg = Normal.fg, bg = Normal.bg }, -- Used to color "Hint" diagnostic messages in diagnostics float.
+    DiagnosticSignHint { fg = Normal.fg, bg = Normal.bg }, -- Used for "Hint" signs in sign column.
+    -- OK:
+    DiagnosticVirtualTextOk { fg = Normal.fg, bg = Normal.bg }, -- Used for "Ok" diagnostic virtual text.
+    DiagnosticUnderlineOk { fg = Normal.fg, bg = Normal.bg }, -- Used to underline "Ok" diagnostics.
+    DiagnosticFloatingOk { fg = Normal.fg, bg = Normal.bg }, -- Used to color "Ok" diagnostic messages in diagnostics float.
+    DiagnosticSignOk { fg = Normal.fg, bg = Normal.bg }, -- Used for "Ok" signs in sign column.
 
 -- END: Diagnostics
-
-
-
 
 
 
@@ -360,52 +364,52 @@ local theme = lush(function(injected_functions)
     -- SECTION: GitSigns
     -- NOTE: UNUSED
 
-    GitSignsAdd { fg = Normal.fg, bg = Normal.bg },
-    GitSignsChange { fg = Normal.fg, bg = Normal.bg },
-    GitSignsDelete { fg = Normal.fg, bg = Normal.bg },
-    GitSignsAddLn { fg = Normal.fg, bg = Normal.bg },
-    GitSignsChangeLn { fg = Normal.fg, bg = Normal.bg },
-    GitSignsDeleteLn { fg = Normal.fg, bg = Normal.bg },
-    GitSignsAddNr { fg = Normal.fg, bg = Normal.bg },
-    GitSignsChangeNr { fg = Normal.fg, bg = Normal.bg },
-    GitSignsDeleteNr { fg = Normal.fg, bg = Normal.bg },
+    -- GitSignsAdd { fg = Normal.fg, bg = Normal.bg },
+    -- GitSignsChange { fg = Normal.fg, bg = Normal.bg },
+    -- GitSignsDelete { fg = Normal.fg, bg = Normal.bg },
+    -- GitSignsAddLn { fg = Normal.fg, bg = Normal.bg },
+    -- GitSignsChangeLn { fg = Normal.fg, bg = Normal.bg },
+    -- GitSignsDeleteLn { fg = Normal.fg, bg = Normal.bg },
+    -- GitSignsAddNr { fg = Normal.fg, bg = Normal.bg },
+    -- GitSignsChangeNr { fg = Normal.fg, bg = Normal.bg },
+    -- GitSignsDeleteNr { fg = Normal.fg, bg = Normal.bg },
 
     -- END: GitSigns
 
     -- SECTION: Misc
     -- NOTE: UNUSED
 
-    FlashBackdrop { fg = Normal.fg, bg = Normal.bg },
-    FlashLabel { fg = Normal.fg, bg = Normal.bg },
-    FlashMatch { fg = Normal.fg, bg = Normal.bg },
-    IblIndent { fg = Normal.fg, bg = Normal.bg },
-    IblScope { fg = Normal.fg, bg = Normal.bg },
-    IblWhitespace { fg = Normal.fg, bg = Normal.bg },
-    NotifyERRORBorder { fg = Normal.fg, bg = Normal.bg },
-    NotifyWARNBorder { fg = Normal.fg, bg = Normal.bg },
-    NotifyINFOBorder { fg = Normal.fg, bg = Normal.bg },
-    NotifyDEBUGBorder { fg = Normal.fg, bg = Normal.bg },
-    NotifyTRACEBorder { fg = Normal.fg, bg = Normal.bg },
-    NotifyERRORBody { fg = Normal.fg, bg = Normal.bg },
-    NotifyWARNBody { fg = Normal.fg, bg = Normal.bg },
-    NotifyINFOBody { fg = Normal.fg, bg = Normal.bg },
-    NotifyDEBUGBody { fg = Normal.fg, bg = Normal.bg },
-    NotifyTRACEBody { fg = Normal.fg, bg = Normal.bg },
-    sym"@lsp.type.class" { fg = Normal.fg, bg = Normal.bg },
-    sym"@lsp.type.comment" { fg = Comment.fg, bg = Comment.bg, gui = Comment.gui },
-    sym"@lsp.type.decorator" { fg = Normal.fg, bg = Normal.bg, gui = Comment.gui },
-    sym"@lsp.type.enum" { fg = Normal.fg, bg = Normal.bg },
-    sym"@lsp.type.enumMember" { fg = Normal.fg, bg = Normal.bg },
-    sym"@lsp.type.function" { fg = Normal.fg, bg = Normal.bg },
-    sym"@lsp.type.interface" { fg = Normal.fg, bg = Normal.bg },
-    sym"@lsp.type.keyword" { fg = Normal.fg, bg = Normal.bg },
-    sym"@lsp.type.namespace" { fg = Normal.fg, bg = Normal.bg },
-    sym"@lsp.type.parameter" { fg = Normal.fg, bg = Normal.bg },
-    sym"@lsp.type.property" { fg = Normal.fg, bg = Normal.bg },
-    sym"@lsp.type.struct" { fg = Normal.fg, bg = Normal.bg },
-    sym"@lsp.type.type" { fg = Normal.fg, bg = Normal.bg },
-    sym"@lsp.type.typeParameter" { fg = Normal.fg, bg = Normal.bg },
-    sym"@lsp.type.variable" { fg = Normal.fg, bg = Normal.bg },
+    -- FlashBackdrop { fg = Normal.fg, bg = Normal.bg },
+    -- FlashLabel { fg = Normal.fg, bg = Normal.bg },
+    -- FlashMatch { fg = Normal.fg, bg = Normal.bg },
+    -- IblIndent { fg = Normal.fg, bg = Normal.bg },
+    -- IblScope { fg = Normal.fg, bg = Normal.bg },
+    -- IblWhitespace { fg = Normal.fg, bg = Normal.bg },
+    -- NotifyERRORBorder { fg = Normal.fg, bg = Normal.bg },
+    -- NotifyWARNBorder { fg = Normal.fg, bg = Normal.bg },
+    -- NotifyINFOBorder { fg = Normal.fg, bg = Normal.bg },
+    -- NotifyDEBUGBorder { fg = Normal.fg, bg = Normal.bg },
+    -- NotifyTRACEBorder { fg = Normal.fg, bg = Normal.bg },
+    -- NotifyERRORBody { fg = Normal.fg, bg = Normal.bg },
+    -- NotifyWARNBody { fg = Normal.fg, bg = Normal.bg },
+    -- NotifyINFOBody { fg = Normal.fg, bg = Normal.bg },
+    -- NotifyDEBUGBody { fg = Normal.fg, bg = Normal.bg },
+    -- NotifyTRACEBody { fg = Normal.fg, bg = Normal.bg },
+    -- sym"@lsp.type.class" { fg = Normal.fg, bg = Normal.bg },
+    -- sym"@lsp.type.comment" { fg = Comment.fg, bg = Comment.bg, gui = Comment.gui },
+    -- sym"@lsp.type.decorator" { fg = Normal.fg, bg = Normal.bg, gui = Comment.gui },
+    -- sym"@lsp.type.enum" { fg = Normal.fg, bg = Normal.bg },
+    -- sym"@lsp.type.enumMember" { fg = Normal.fg, bg = Normal.bg },
+    -- sym"@lsp.type.function" { fg = Normal.fg, bg = Normal.bg },
+    -- sym"@lsp.type.interface" { fg = Normal.fg, bg = Normal.bg },
+    -- sym"@lsp.type.keyword" { fg = Normal.fg, bg = Normal.bg },
+    -- sym"@lsp.type.namespace" { fg = Normal.fg, bg = Normal.bg },
+    -- sym"@lsp.type.parameter" { fg = Normal.fg, bg = Normal.bg },
+    -- sym"@lsp.type.property" { fg = Normal.fg, bg = Normal.bg },
+    -- sym"@lsp.type.struct" { fg = Normal.fg, bg = Normal.bg },
+    -- sym"@lsp.type.type" { fg = Normal.fg, bg = Normal.bg },
+    -- sym"@lsp.type.typeParameter" { fg = Normal.fg, bg = Normal.bg },
+    -- sym"@lsp.type.variable" { fg = Normal.fg, bg = Normal.bg },
 
     -- END: Misc
 }
