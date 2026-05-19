@@ -351,7 +351,7 @@ local theme = lush(function(injected_functions)
 
     -- END: Which-Key
 
-    -- SECTION: Which-Key
+    -- SECTION: Trouble
     -- NOTE: UNUSED
 
     -- TroubleText { fg = Normal.fg, bg = Normal.bg },
@@ -363,7 +363,7 @@ local theme = lush(function(injected_functions)
     -- TroublePreview { fg = Normal.fg, bg = Normal.bg },
     -- TroubleSign { fg = Normal.fg, bg = Normal.bg },
 
-    -- END: Which-Key
+    -- END: Trouble
 
     -- SECTION: GitSigns
     -- NOTE: UNUSED
