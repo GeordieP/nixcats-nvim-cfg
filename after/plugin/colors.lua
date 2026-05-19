@@ -1,1 +1,1 @@
-vim.cmd([[hi LineNr guifg=#bb9af7]])
+-- vim.cmd([[hi LineNr guifg=#bb9af7]]) -- Commented out: LineNr is now defined by the selected theme (e.g., daylight) to avoid conflicts
