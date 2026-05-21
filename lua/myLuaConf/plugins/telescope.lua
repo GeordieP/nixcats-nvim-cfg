@@ -294,6 +294,8 @@ return {
                 { "LSP: Rename symbol under cursor", "lua vim.lsp.buf.rename()" },
                 { "Cloak: Toggle", "CloakToggle" },
                 { "Cloak: Preview Line", "CloakPreviewLine" },
+                { "Enable line wrapping", "set wrap" },
+                { "Disable line wrapping", "set nowrap" },
 
                 -- NOTE: 1775243330745 duplicate; make font changing available on the top level menu
                 { "Change font...          => GUI clients like Neovide only", "Telescope menu gui_font" },
